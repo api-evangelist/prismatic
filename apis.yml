@@ -1,33 +1,111 @@
 aid: prismatic
-name: Prismatic
-description: >-
-  The most efficient way to build, deploy, and manage integrations. Prismatic
-  empowers everyone on your team with integration tools for devs and non-devs
-  alike. 
-type: Index
-position: Consumer
-access: 3rd-Party
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags:
-  - API
-created: '2025-06-05'
-modified: '2025-06-05'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/apis.yml
-specificationVersion: '0.19'
 apis:
   - aid: prismatic:prismatic
     name: Prismatic
+    tags:
+      - API
+    humanURL: ' https://prismatic.io/'
+    properties:
+      - url: ' https://prismatic.io/'
+        type: Documentation
     description: >-
       The most efficient way to build, deploy, and manage integrations.
       Prismatic empowers everyone on your team with integration tools for devs
       and non-devs alike. 
-    humanURL: ' https://prismatic.io/'
-    tags:
-      - API
+  - aid: prismatic:prismatics-graphql-api
+    name: Prismatics GraphQL API
+    description: 'null'
+    humanURL: https://prismatic.io/docs/api/
+    tags: []
     properties:
       - type: Documentation
-        url: ' https://prismatic.io/'
+        url: https://prismatic.io/docs/api/
+      - name: Authentication | Prismatic Docs
+        description: 'null'
+        url: https://prismatic.io/docs/api/authentication/
+        type: Authentication
+      - name: Pagination with Prismatics API | Prismatic Docs
+        description: 'null'
+        url: https://prismatic.io/docs/api/pagination/
+        type: Pagination
+      - name: Authentication | Prismatic Docs
+        description: 'null'
+        url: https://prismatic.io/docs/api/authentication/
+        type: Authentication
+name: Prismatic
+tags:
+  - API
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+created: '2025-06-05'
+modified: '2025-06-05'
+position: Consumer
+description: >-
+  The most efficient way to build, deploy, and manage integrations. Prismatic
+  empowers everyone on your team with integration tools for devs and non-devs
+  alike. 
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
+specificationVersion: '0.19'
+common:
+  - name: Custom Connectors Overview | Prismatic Docs
+    description: 'null'
+    url: https://prismatic.io/docs/custom-connectors/
+    type: SDKs
+  - name: Prismatics API in a CI/CD System | Prismatic Docs
+    description: 'null'
+    url: https://prismatic.io/docs/api/ci-cd-system/
+    type: CI/CD
+  - name: GitHub Actions | Prismatic Docs
+    description: GitHub Actions
+    url: https://prismatic.io/docs/api/github-actions/
+    type: GitHubActions
+  - name: Prism CLI Overview | Prismatic Docs
+    description: 'null'
+    url: https://prismatic.io/docs/cli/
+    type: CLI
+  - name: Prism CLI Overview | Prismatic Docs
+    description: 'null'
+    url: https://prismatic.io/docs/cli/
+    type: CLI
+  - name: Prism CLI Overview | Prismatic Docs
+    description: 'null'
+    url: https://prismatic.io/docs/cli/
+    type: CLI
+  - name: Prism CLI Overview | Prismatic Docs
+    description: 'null'
+    url: https://prismatic.io/docs/cli/
+    type: CLI
+  - name: Prismatic Changelog | Prismatic Docs
+    description: 'null'
+    url: https://prismatic.io/docs/changelog/
+    type: ChangeLog
+  - name: Prismatics GraphiQL Explorer | Prismatic Docs
+    description: 'null'
+    url: https://prismatic.io/docs/explorer/
+    type: Explorer
+  - name: Build Your First Integration | Prismatic Docs
+    description: 'null'
+    url: >-
+      https://prismatic.io/docs/integrations/low-code-integration-designer/get-started/first-integration/
+    type: GettingStarted
+  - name: Privacy Policy | Prismatic
+    description: 'null'
+    url: https://prismatic.io/legal/privacy/
+    type: PrivacyPolicy
+  - name: Privacy Policy | Prismatic
+    description: 'null'
+    url: https://prismatic.io/legal/privacy/
+    type: PrivacyPolicy
+  - name: Terms of Use | Prismatic
+    description: 'null'
+    url: https://prismatic.io/legal/terms/
+    type: TermsOfService
+  - name: Security Policy | Prismatic
+    description: 'null'
+    url: https://prismatic.io/legal/security/
+    type: Security
