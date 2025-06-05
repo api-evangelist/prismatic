@@ -2,21 +2,6 @@ aid: prismatic
 url: >-
   https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/apis.yml
 apis:
-  - aid: prismatic:prismatic
-    name: Prismatic
-    tags:
-      - Integrations
-      - Embedded SaaS Integration
-      - Workflows
-      - Connectors
-    humanURL: ' https://prismatic.io/'
-    properties:
-      - url: ' https://prismatic.io/'
-        type: Documentation
-    description: >-
-      The most efficient way to build, deploy, and manage integrations.
-      Prismatic empowers everyone on your team with integration tools for devs
-      and non-devs alike. 
   - aid: prismatic:prismatics-graphql-api
     name: Prismatics GraphQL API
     tags:
@@ -67,18 +52,6 @@ common:
     name: Prism CLI Overview | Prismatic Docs
     type: CLI
     description: 'null'
-  - url: https://prismatic.io/docs/cli/
-    name: Prism CLI Overview | Prismatic Docs
-    type: CLI
-    description: 'null'
-  - url: https://prismatic.io/docs/cli/
-    name: Prism CLI Overview | Prismatic Docs
-    type: CLI
-    description: 'null'
-  - url: https://prismatic.io/docs/cli/
-    name: Prism CLI Overview | Prismatic Docs
-    type: CLI
-    description: 'null'
   - url: https://prismatic.io/docs/changelog/
     name: Prismatic Changelog | Prismatic Docs
     type: ChangeLog
@@ -91,10 +64,6 @@ common:
       https://prismatic.io/docs/integrations/low-code-integration-designer/get-started/first-integration/
     name: Build Your First Integration | Prismatic Docs
     type: GettingStarted
-    description: 'null'
-  - url: https://prismatic.io/legal/privacy/
-    name: Privacy Policy | Prismatic
-    type: PrivacyPolicy
     description: 'null'
   - url: https://prismatic.io/legal/privacy/
     name: Privacy Policy | Prismatic
