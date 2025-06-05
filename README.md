@@ -50,6 +50,9 @@ Prismatic provides a GraphQL-based API for you to build, deploy, and support you
 - [TermsOfService](https://prismatic.io/legal/terms/)
 - [Security](https://prismatic.io/legal/security/)
 - [GitHubOrganization](https://github.com/prismatic-io)
+- [Integrations](https://prismatic.io/connectors/)
+- [Features](undefined)
+- [Benefits](undefined)
 
 ## Maintainers
 
