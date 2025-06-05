@@ -82,6 +82,9 @@ common:
     name: Security Policy | Prismatic
     type: Security
     description: 'null'
+  - name: GitHub Organization
+    url: https://github.com/prismatic-io
+    type: GitHubOrganization
 created: '2025-06-05'
 modified: '2025-06-05'
 position: Consumer
