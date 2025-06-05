@@ -5,7 +5,10 @@ apis:
   - aid: prismatic:prismatic
     name: Prismatic
     tags:
-      - API
+      - Integrations
+      - Embedded SaaS Integration
+      - Workflows
+      - Connectors
     humanURL: ' https://prismatic.io/'
     properties:
       - url: ' https://prismatic.io/'
@@ -16,30 +19,95 @@ apis:
       and non-devs alike. 
   - aid: prismatic:prismatics-graphql-api
     name: Prismatics GraphQL API
-    description: 'null'
+    tags:
+      - Integrations
+      - Embedded SaaS Integration
+      - Workflows
+      - Connectors
     humanURL: https://prismatic.io/docs/api/
-    tags: []
     properties:
-      - type: Documentation
-        url: https://prismatic.io/docs/api/
-      - name: Authentication | Prismatic Docs
-        description: 'null'
-        url: https://prismatic.io/docs/api/authentication/
+      - url: https://prismatic.io/docs/api/
+        type: Documentation
+      - url: https://prismatic.io/docs/api/authentication/
+        name: Authentication | Prismatic Docs
         type: Authentication
-      - name: Pagination with Prismatics API | Prismatic Docs
         description: 'null'
-        url: https://prismatic.io/docs/api/pagination/
+      - url: https://prismatic.io/docs/api/pagination/
+        name: Pagination with Prismatics API | Prismatic Docs
         type: Pagination
-      - name: Authentication | Prismatic Docs
         description: 'null'
-        url: https://prismatic.io/docs/api/authentication/
+      - url: https://prismatic.io/docs/api/authentication/
+        name: Authentication | Prismatic Docs
         type: Authentication
+        description: 'null'
+    description: 'null'
 name: Prismatic
 tags:
-  - API
+  - Integrations
+  - Embedded SaaS Integration
+  - Workflows
+  - Connectors
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
+common:
+  - url: https://prismatic.io/docs/custom-connectors/
+    name: Custom Connectors Overview | Prismatic Docs
+    type: SDKs
+    description: 'null'
+  - url: https://prismatic.io/docs/api/ci-cd-system/
+    name: Prismatics API in a CI/CD System | Prismatic Docs
+    type: CI/CD
+    description: 'null'
+  - url: https://prismatic.io/docs/api/github-actions/
+    name: GitHub Actions | Prismatic Docs
+    type: GitHubActions
+    description: GitHub Actions
+  - url: https://prismatic.io/docs/cli/
+    name: Prism CLI Overview | Prismatic Docs
+    type: CLI
+    description: 'null'
+  - url: https://prismatic.io/docs/cli/
+    name: Prism CLI Overview | Prismatic Docs
+    type: CLI
+    description: 'null'
+  - url: https://prismatic.io/docs/cli/
+    name: Prism CLI Overview | Prismatic Docs
+    type: CLI
+    description: 'null'
+  - url: https://prismatic.io/docs/cli/
+    name: Prism CLI Overview | Prismatic Docs
+    type: CLI
+    description: 'null'
+  - url: https://prismatic.io/docs/changelog/
+    name: Prismatic Changelog | Prismatic Docs
+    type: ChangeLog
+    description: 'null'
+  - url: https://prismatic.io/docs/explorer/
+    name: Prismatics GraphiQL Explorer | Prismatic Docs
+    type: Explorer
+    description: 'null'
+  - url: >-
+      https://prismatic.io/docs/integrations/low-code-integration-designer/get-started/first-integration/
+    name: Build Your First Integration | Prismatic Docs
+    type: GettingStarted
+    description: 'null'
+  - url: https://prismatic.io/legal/privacy/
+    name: Privacy Policy | Prismatic
+    type: PrivacyPolicy
+    description: 'null'
+  - url: https://prismatic.io/legal/privacy/
+    name: Privacy Policy | Prismatic
+    type: PrivacyPolicy
+    description: 'null'
+  - url: https://prismatic.io/legal/terms/
+    name: Terms of Use | Prismatic
+    type: TermsOfService
+    description: 'null'
+  - url: https://prismatic.io/legal/security/
+    name: Security Policy | Prismatic
+    type: Security
+    description: 'null'
 created: '2025-06-05'
 modified: '2025-06-05'
 position: Consumer
@@ -51,61 +119,3 @@ maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
 specificationVersion: '0.19'
-common:
-  - name: Custom Connectors Overview | Prismatic Docs
-    description: 'null'
-    url: https://prismatic.io/docs/custom-connectors/
-    type: SDKs
-  - name: Prismatics API in a CI/CD System | Prismatic Docs
-    description: 'null'
-    url: https://prismatic.io/docs/api/ci-cd-system/
-    type: CI/CD
-  - name: GitHub Actions | Prismatic Docs
-    description: GitHub Actions
-    url: https://prismatic.io/docs/api/github-actions/
-    type: GitHubActions
-  - name: Prism CLI Overview | Prismatic Docs
-    description: 'null'
-    url: https://prismatic.io/docs/cli/
-    type: CLI
-  - name: Prism CLI Overview | Prismatic Docs
-    description: 'null'
-    url: https://prismatic.io/docs/cli/
-    type: CLI
-  - name: Prism CLI Overview | Prismatic Docs
-    description: 'null'
-    url: https://prismatic.io/docs/cli/
-    type: CLI
-  - name: Prism CLI Overview | Prismatic Docs
-    description: 'null'
-    url: https://prismatic.io/docs/cli/
-    type: CLI
-  - name: Prismatic Changelog | Prismatic Docs
-    description: 'null'
-    url: https://prismatic.io/docs/changelog/
-    type: ChangeLog
-  - name: Prismatics GraphiQL Explorer | Prismatic Docs
-    description: 'null'
-    url: https://prismatic.io/docs/explorer/
-    type: Explorer
-  - name: Build Your First Integration | Prismatic Docs
-    description: 'null'
-    url: >-
-      https://prismatic.io/docs/integrations/low-code-integration-designer/get-started/first-integration/
-    type: GettingStarted
-  - name: Privacy Policy | Prismatic
-    description: 'null'
-    url: https://prismatic.io/legal/privacy/
-    type: PrivacyPolicy
-  - name: Privacy Policy | Prismatic
-    description: 'null'
-    url: https://prismatic.io/legal/privacy/
-    type: PrivacyPolicy
-  - name: Terms of Use | Prismatic
-    description: 'null'
-    url: https://prismatic.io/legal/terms/
-    type: TermsOfService
-  - name: Security Policy | Prismatic
-    description: 'null'
-    url: https://prismatic.io/legal/security/
-    type: Security
