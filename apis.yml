@@ -25,7 +25,12 @@ apis:
         name: Authentication | Prismatic Docs
         type: Authentication
         description: 'null'
-    description: 'null'
+    description: >-
+      Prismatic provides a GraphQL-based API for you to build, deploy, and
+      support your integrations programmatically. While we recommend that new
+      users use the web app or Prismatic CLI tool to manage Prismatic resources,
+      developer users will likely want to use the API to script out integration
+      management.
 name: Prismatic
 tags:
   - Integrations
