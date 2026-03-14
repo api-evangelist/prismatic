@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/json-schema/execution.json",
+  "title": "Prismatic Execution",
+  "description": "An execution represents a single run of an instance flow, including its status, logs, step results, and timing information.",
+  "type": "object",
+  "required": ["id"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the execution"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "running", "completed", "failed", "canceled"],
+      "description": "Current status of the execution"
+    },
+    "instance": {
+      "$ref": "instance.json",
+      "description": "The instance this execution belongs to"
+    },
+    "flow": {
+      "$ref": "flow.json",
+      "description": "The flow that was executed"
+    },
+    "stepResults": {
+      "type": "array",
+      "description": "Results from each step in the execution",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stepName": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "running", "completed", "failed"]
+          },
+          "startedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "retryAttempts": {
+      "type": "integer",
+      "description": "Number of retry attempts for this execution"
+    },
+    "retryForExecutionId": {
+      "type": "string",
+      "description": "ID of the original execution if this is a retry"
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the execution started"
+    },
+    "endedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the execution ended"
+    }
+  }
+}

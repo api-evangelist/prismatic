@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/json-schema/instance.json",
+  "title": "Prismatic Instance",
+  "description": "An instance is a deployment of an integration to a specific customer, with customer-specific configuration values.",
+  "type": "object",
+  "required": ["id", "name"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the instance"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the instance"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the instance"
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the instance is currently enabled and running"
+    },
+    "deployed": {
+      "type": "boolean",
+      "description": "Whether the instance has been deployed"
+    },
+    "needsDeploy": {
+      "type": "boolean",
+      "description": "Whether the instance needs to be redeployed after configuration changes"
+    },
+    "customer": {
+      "$ref": "customer.json",
+      "description": "The customer this instance is deployed to"
+    },
+    "integration": {
+      "$ref": "integration.json",
+      "description": "The integration this instance is based on"
+    },
+    "configVariables": {
+      "type": "array",
+      "description": "Configuration variables specific to this instance",
+      "items": {
+        "$ref": "config-variable.json"
+      }
+    },
+    "flowConfigs": {
+      "type": "array",
+      "description": "Flow-level configuration for this instance",
+      "items": {
+        "type": "object",
+        "properties": {
+          "flow": {
+            "$ref": "flow.json"
+          },
+          "apiEndpointUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Webhook endpoint URL for the flow"
+          }
+        }
+      }
+    },
+    "labels": {
+      "type": "array",
+      "description": "Labels applied to the instance",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lastDeployedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the last deployment"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the instance was created"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the instance was last updated"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/json-schema/alert-monitor.json",
+  "title": "Prismatic Alert Monitor",
+  "description": "An alert monitor defines conditions for monitoring instance executions and triggering notifications when those conditions are met.",
+  "type": "object",
+  "required": ["id", "name"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the alert monitor"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the alert monitor"
+    },
+    "triggered": {
+      "type": "boolean",
+      "description": "Whether the alert is currently in a triggered state"
+    },
+    "triggerType": {
+      "type": "string",
+      "enum": ["execution_failed", "execution_overdue", "execution_duration_matched", "log_severity_matched", "connection_error"],
+      "description": "Type of trigger condition for the alert"
+    },
+    "instance": {
+      "$ref": "instance.json",
+      "description": "The instance this alert monitor is attached to"
+    },
+    "groups": {
+      "type": "array",
+      "description": "Alert groups that receive notifications from this monitor",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "durationSecondsCondition": {
+      "type": "integer",
+      "description": "Duration threshold in seconds for duration-based triggers"
+    },
+    "logSeverityLevelCondition": {
+      "type": "integer",
+      "description": "Log severity level threshold for severity-based triggers"
+    },
+    "executionOverdueMinutes": {
+      "type": "integer",
+      "description": "Minutes past expected schedule before triggering overdue alert"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the alert monitor was created"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the alert monitor was last updated"
+    }
+  }
+}

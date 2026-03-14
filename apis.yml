@@ -26,10 +26,26 @@ apis:
         name: Pagination with Prismatics API | Prismatic Docs
         type: Pagination
         description: 'null'
-      - url: https://prismatic.io/docs/api/authentication/
-        name: Authentication | Prismatic Docs
-        type: Authentication
-        description: 'null'
+      - url: json-schema/customer.json
+        type: JSONSchema
+      - url: json-schema/integration.json
+        type: JSONSchema
+      - url: json-schema/instance.json
+        type: JSONSchema
+      - url: json-schema/component.json
+        type: JSONSchema
+      - url: json-schema/flow.json
+        type: JSONSchema
+      - url: json-schema/config-variable.json
+        type: JSONSchema
+      - url: json-schema/user.json
+        type: JSONSchema
+      - url: json-schema/alert-monitor.json
+        type: JSONSchema
+      - url: json-schema/execution.json
+        type: JSONSchema
+      - url: json-ld/prismatic-context.jsonld
+        type: JSONLD
     description: >-
       Prismatic provides a GraphQL-based API for you to build, deploy, and
       support your integrations programmatically. While we recommend that new

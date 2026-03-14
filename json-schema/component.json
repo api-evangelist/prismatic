@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/json-schema/component.json",
+  "title": "Prismatic Component",
+  "description": "A component is a reusable unit of functionality (connector) that provides actions, triggers, and data sources for use in integrations.",
+  "type": "object",
+  "required": ["id", "key", "label"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the component"
+    },
+    "key": {
+      "type": "string",
+      "description": "Unique key used to reference the component"
+    },
+    "label": {
+      "type": "string",
+      "description": "Display label for the component"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the component and its purpose"
+    },
+    "category": {
+      "type": "string",
+      "description": "Category the component belongs to"
+    },
+    "isPublic": {
+      "type": "boolean",
+      "description": "Whether the component is publicly available or custom"
+    },
+    "authorizationRequired": {
+      "type": "boolean",
+      "description": "Whether the component requires authorization credentials"
+    },
+    "iconUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL for the component icon"
+    },
+    "actions": {
+      "type": "array",
+      "description": "Actions provided by the component",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "triggers": {
+      "type": "array",
+      "description": "Triggers provided by the component",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "dataSources": {
+      "type": "array",
+      "description": "Data sources provided by the component",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "connections": {
+      "type": "array",
+      "description": "Connection definitions for the component",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "oauth2Type": {
+            "type": "string",
+            "enum": ["authorization_code", "client_credentials"]
+          }
+        }
+      }
+    },
+    "versionNumber": {
+      "type": "integer",
+      "description": "Version number of the component"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the component was created"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the component was last updated"
+    }
+  }
+}

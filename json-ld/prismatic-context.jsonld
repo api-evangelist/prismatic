@@ -1,0 +1,135 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "prismatic": "https://prismatic.io/docs/api/schema/",
+    "id": "@id",
+    "type": "@type",
+    "Customer": {
+      "@id": "prismatic:Customer",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "externalId": "schema:identifier",
+        "avatarUrl": "schema:image",
+        "labels": "schema:keywords",
+        "allowEmbeddedDesigner": "prismatic:allowEmbeddedDesigner",
+        "createdAt": "schema:dateCreated",
+        "updatedAt": "schema:dateModified"
+      }
+    },
+    "Integration": {
+      "@id": "prismatic:Integration",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "category": "schema:category",
+        "labels": "schema:keywords",
+        "overview": "schema:abstract",
+        "versionNumber": "schema:version",
+        "isCodeNative": "prismatic:isCodeNative",
+        "marketplaceConfiguration": "prismatic:marketplaceConfiguration",
+        "flows": "prismatic:flows",
+        "instances": "prismatic:instances",
+        "createdAt": "schema:dateCreated",
+        "updatedAt": "schema:dateModified"
+      }
+    },
+    "Instance": {
+      "@id": "prismatic:Instance",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "enabled": "prismatic:enabled",
+        "deployed": "prismatic:deployed",
+        "needsDeploy": "prismatic:needsDeploy",
+        "customer": "prismatic:customer",
+        "integration": "prismatic:integration",
+        "configVariables": "prismatic:configVariables",
+        "flowConfigs": "prismatic:flowConfigs",
+        "labels": "schema:keywords",
+        "lastDeployedAt": "prismatic:lastDeployedAt",
+        "createdAt": "schema:dateCreated",
+        "updatedAt": "schema:dateModified"
+      }
+    },
+    "Component": {
+      "@id": "prismatic:Component",
+      "@context": {
+        "key": "schema:identifier",
+        "label": "schema:name",
+        "description": "schema:description",
+        "category": "schema:category",
+        "isPublic": "prismatic:isPublic",
+        "authorizationRequired": "prismatic:authorizationRequired",
+        "iconUrl": "schema:image",
+        "actions": "schema:potentialAction",
+        "triggers": "prismatic:triggers",
+        "dataSources": "prismatic:dataSources",
+        "connections": "prismatic:connections",
+        "versionNumber": "schema:version",
+        "createdAt": "schema:dateCreated",
+        "updatedAt": "schema:dateModified"
+      }
+    },
+    "Flow": {
+      "@id": "prismatic:Flow",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "stableKey": "schema:identifier",
+        "isSynchronous": "prismatic:isSynchronous",
+        "steps": "prismatic:steps",
+        "endpointSecurityType": "prismatic:endpointSecurityType",
+        "createdAt": "schema:dateCreated",
+        "updatedAt": "schema:dateModified"
+      }
+    },
+    "ConfigVariable": {
+      "@id": "prismatic:ConfigVariable",
+      "@context": {
+        "key": "schema:identifier",
+        "description": "schema:description",
+        "dataType": "prismatic:dataType",
+        "defaultValue": "schema:defaultValue",
+        "value": "schema:value",
+        "createdAt": "schema:dateCreated",
+        "updatedAt": "schema:dateModified"
+      }
+    },
+    "User": {
+      "@id": "prismatic:User",
+      "@context": {
+        "email": "schema:email",
+        "name": "schema:name",
+        "avatarUrl": "schema:image",
+        "externalId": "schema:identifier",
+        "role": "schema:roleName",
+        "customer": "prismatic:customer",
+        "createdAt": "schema:dateCreated",
+        "updatedAt": "schema:dateModified"
+      }
+    },
+    "AlertMonitor": {
+      "@id": "prismatic:AlertMonitor",
+      "@context": {
+        "name": "schema:name",
+        "triggered": "prismatic:triggered",
+        "triggerType": "prismatic:triggerType",
+        "instance": "prismatic:instance",
+        "createdAt": "schema:dateCreated",
+        "updatedAt": "schema:dateModified"
+      }
+    },
+    "Execution": {
+      "@id": "prismatic:Execution",
+      "@context": {
+        "status": "schema:actionStatus",
+        "instance": "prismatic:instance",
+        "flow": "prismatic:flow",
+        "stepResults": "prismatic:stepResults",
+        "startedAt": "schema:startTime",
+        "endedAt": "schema:endTime"
+      }
+    }
+  }
+}

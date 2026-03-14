@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/json-schema/customer.json",
+  "title": "Prismatic Customer",
+  "description": "A customer represents a company or organization that uses your product and has integrations deployed to them in Prismatic.",
+  "type": "object",
+  "required": ["id", "name"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the customer"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the customer organization"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the customer"
+    },
+    "externalId": {
+      "type": "string",
+      "description": "External identifier used to map the customer to your own system"
+    },
+    "avatarUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the customer avatar image"
+    },
+    "labels": {
+      "type": "array",
+      "description": "Labels applied to the customer for categorization",
+      "items": {
+        "type": "string"
+      }
+    },
+    "allowEmbeddedDesigner": {
+      "type": "boolean",
+      "description": "Whether the customer is allowed to use the embedded designer"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the customer was created"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the customer was last updated"
+    }
+  }
+}

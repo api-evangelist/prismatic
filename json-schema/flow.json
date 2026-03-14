@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/json-schema/flow.json",
+  "title": "Prismatic Flow",
+  "description": "A flow is a sequence of steps within an integration that defines a specific workflow or automation path, including triggers and actions.",
+  "type": "object",
+  "required": ["id", "name"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the flow"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the flow"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of what the flow does"
+    },
+    "stableKey": {
+      "type": "string",
+      "description": "Stable key used to reference the flow across versions"
+    },
+    "isSynchronous": {
+      "type": "boolean",
+      "description": "Whether the flow runs synchronously and returns a response"
+    },
+    "retryMaxAttempts": {
+      "type": "integer",
+      "description": "Maximum number of retry attempts on failure"
+    },
+    "retryDelayMinutes": {
+      "type": "integer",
+      "description": "Delay in minutes between retry attempts"
+    },
+    "retryUniqueRequestIdField": {
+      "type": "string",
+      "description": "Field used as unique request ID for deduplication"
+    },
+    "endpointSecurityType": {
+      "type": "string",
+      "enum": ["customer_optional", "customer_required", "organization"],
+      "description": "Security type for the flow webhook endpoint"
+    },
+    "steps": {
+      "type": "array",
+      "description": "Ordered list of steps in the flow",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "action": {
+            "type": "object",
+            "properties": {
+              "component": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  }
+                }
+              },
+              "key": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the flow was created"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the flow was last updated"
+    }
+  }
+}

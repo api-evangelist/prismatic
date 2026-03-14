@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/json-schema/integration.json",
+  "title": "Prismatic Integration",
+  "description": "An integration defines a workflow connecting your product to a third-party service. Integrations are built in the designer and deployed as instances to customers.",
+  "type": "object",
+  "required": ["id", "name"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the integration"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the integration"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the integration and what it does"
+    },
+    "category": {
+      "type": "string",
+      "description": "Category for organizing integrations"
+    },
+    "labels": {
+      "type": "array",
+      "description": "Labels applied to the integration for categorization",
+      "items": {
+        "type": "string"
+      }
+    },
+    "overview": {
+      "type": "string",
+      "description": "Detailed overview of the integration displayed in the marketplace"
+    },
+    "versionNumber": {
+      "type": "integer",
+      "description": "Current version number of the integration"
+    },
+    "versionIsAvailable": {
+      "type": "boolean",
+      "description": "Whether the current version is available for deployment"
+    },
+    "isCodeNative": {
+      "type": "boolean",
+      "description": "Whether the integration is built using code-native (CNI) approach"
+    },
+    "flows": {
+      "type": "array",
+      "description": "List of flows within the integration",
+      "items": {
+        "$ref": "flow.json"
+      }
+    },
+    "instances": {
+      "type": "array",
+      "description": "Deployed instances of the integration",
+      "items": {
+        "$ref": "instance.json"
+      }
+    },
+    "marketplaceConfiguration": {
+      "type": "string",
+      "enum": ["AVAILABLE", "HIDDEN"],
+      "description": "Visibility setting for the integration marketplace"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the integration was created"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the integration was last updated"
+    }
+  }
+}

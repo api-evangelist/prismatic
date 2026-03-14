@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/json-schema/config-variable.json",
+  "title": "Prismatic Config Variable",
+  "description": "A config variable defines a configurable parameter for an integration that can be set per-instance to customize behavior for each customer.",
+  "type": "object",
+  "required": ["id", "key"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the config variable"
+    },
+    "key": {
+      "type": "string",
+      "description": "Key used to reference the config variable"
+    },
+    "stableKey": {
+      "type": "string",
+      "description": "Stable key that persists across integration versions"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the config variable"
+    },
+    "dataType": {
+      "type": "string",
+      "enum": ["string", "date", "timestamp", "picklist", "schedule", "code", "boolean", "number", "objectSelection", "objectFieldMap", "jsonForm", "connection"],
+      "description": "Data type of the config variable"
+    },
+    "defaultValue": {
+      "type": "string",
+      "description": "Default value for the config variable"
+    },
+    "collectionType": {
+      "type": "string",
+      "enum": ["", "valuelist", "keyvaluelist"],
+      "description": "Collection type if the config variable holds multiple values"
+    },
+    "pickList": {
+      "type": "array",
+      "description": "List of options when dataType is picklist",
+      "items": {
+        "type": "string"
+      }
+    },
+    "visibleToCustomerDeployer": {
+      "type": "boolean",
+      "description": "Whether the config variable is visible to customer users during deployment"
+    },
+    "visibleToOrgDeployer": {
+      "type": "boolean",
+      "description": "Whether the config variable is visible to organization users during deployment"
+    },
+    "value": {
+      "type": "string",
+      "description": "Current value of the config variable for a specific instance"
+    }
+  }
+}
