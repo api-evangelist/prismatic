@@ -14,6 +14,8 @@ apis:
       - Embedded SaaS
     humanURL: https://prismatic.io/docs/api/
     properties:
+      - url: openapi/prismatic-graphql-api-openapi.yml
+        type: OpenAPI
       - url: https://prismatic.io/docs/api/
         type: Documentation
       - url: https://prismatic.io/docs/api/authentication/
@@ -502,7 +504,7 @@ common:
     name: Benefits
     type: Benefits
 created: '2025-06-05'
-modified: '2026-01-02'
+modified: '2026-03-14'
 position: Consumer
 description: >-
   The most efficient way to build, deploy, and manage integrations. Prismatic
