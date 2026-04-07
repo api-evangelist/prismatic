@@ -29,7 +29,7 @@ paths:
   /api:
     post:
       operationId: executeGraphQLQuery
-      summary: Execute GraphQL Query or Mutation
+      summary: Prismatic Execute GraphQL Query or Mutation
       description: >-
         Execute a GraphQL query or mutation against the Prismatic API. This
         endpoint accepts standard GraphQL request bodies containing a query
@@ -140,7 +140,7 @@ paths:
   /auth/refresh:
     post:
       operationId: refreshAuthToken
-      summary: Refresh Authentication Token
+      summary: Prismatic Refresh Authentication Token
       description: >-
         Refresh an expired or expiring access token using a valid refresh token.
         Returns a new access token that can be used to authenticate against the
@@ -165,7 +165,7 @@ paths:
   /auth/revoke:
     post:
       operationId: revokeAuthToken
-      summary: Revoke Refresh Token
+      summary: Prismatic Revoke Refresh Token
       description: >-
         Revoke a refresh token to prevent it from being used to generate new
         access tokens. Use this endpoint if you believe a refresh token has
@@ -186,7 +186,7 @@ paths:
   /get_auth_token/:
     get:
       operationId: getAuthToken
-      summary: Get Short-Lived Auth Token
+      summary: Prismatic Get Short-Lived Auth Token
       description: >-
         Retrieve a short-lived authentication token while logged in to the
         Prismatic web application. This endpoint is accessed via browser

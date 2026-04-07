@@ -523,9 +523,8 @@ created: '2025-06-05'
 modified: '2026-03-14'
 position: Consumer
 description: >-
-  The most efficient way to build, deploy, and manage integrations. Prismatic
-  empowers everyone on your team with integration tools for devs and non-devs
-  alike. 
+  The most efficient way to build, deploy, and manage integrations. Prismatic empowers
+  everyone on your team with integration tools for devs and non-devs alike.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
