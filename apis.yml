@@ -5,13 +5,11 @@ apis:
   - aid: prismatic:prismatics-graphql-api
     name: Prismatics GraphQL API
     tags:
-      - Integrations
-      - Embedded SaaS Integration
-      - Workflows
       - Connectors
+      - Embedded SaaS
+      - Embedded SaaS Integration
       - Integrations
       - Workflows
-      - Embedded SaaS
     humanURL: https://prismatic.io/docs/api/
     properties:
       - url: openapi/prismatic-graphql-api-openapi.yml
@@ -54,9 +52,9 @@ apis:
       management.
 name: Prismatic
 tags:
+  - Embedded iPaaS
   - Integrations
   - Workflows
-  - Embedded iPaaS
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party

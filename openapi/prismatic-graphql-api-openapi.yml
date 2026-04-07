@@ -307,11 +307,11 @@ components:
           type: integer
           description: Token expiration time in seconds
 tags:
-  - name: GraphQL
-    description: >-
-      GraphQL API endpoint for querying and mutating Prismatic resources
-      including customers, integrations, instances, and components
   - name: Authentication
     description: >-
       Authentication endpoints for obtaining, refreshing, and revoking
       JWT tokens used to access the Prismatic API
+  - name: GraphQL
+    description: >-
+      GraphQL API endpoint for querying and mutating Prismatic resources
+      including customers, integrations, instances, and components
