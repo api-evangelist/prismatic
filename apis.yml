@@ -523,6 +523,107 @@ position: Consumer
 description: >-
   The most efficient way to build, deploy, and manage integrations. Prismatic empowers
   everyone on your team with integration tools for devs and non-devs alike.
+integrations:
+  - name: Calendly
+  - name: Google Calendar
+  - name: Azure Files
+  - name: Amazon DynamoDB
+  - name: Airtable
+  - name: xAI Grok
+  - name: Anthropic
+  - name: Google Gemini
+  - name: Azure OpenAI Service
+  - name: OpenAI
+  - name: Active Directory
+  - name: Adobe Acrobat Sign
+  - name: Adobe Analytics
+  - name: Adobe Commerce Magento
+  - name: Adobe I/O Events
+  - name: Adobe Marketo Engage
+  - name: ADP Workforce Now
+  - name: Algolia
+  - name: Amazon S3
+  - name: Amazon Seller Central
+  - name: Amazon SES
+  - name: Amazon SNS
+  - name: Amazon SQS
+  - name: AMQP
+  - name: ArcGIS
+  - name: Arena PLM
+  - name: Asana
+  - name: Aspose
+  - name: AWS Glue
+  - name: AWS Lambda
+  - name: Azure Blob Storage
+  - name: Azure Cosmos DB
+  - name: Azure Event Grid
+  - name: Azure Service Bus
+  - name: BambooHR
+  - name: BigCommerce
+  - name: Bill
+  - name: Box
+  - name: Branch
+  - name: Bynder
+  - name: Canny
+  - name: Change Data Format
+  - name: ClickUp
+  - name: Code
+  - name: Collection Tools
+  - name: Confluence
+  - name: Contentful
+  - name: Cross Flow
+  - name: CSV
+  - name: Customer.io
+  - name: Data Mapper
+  - name: Databricks
+  - name: Datadog
+  - name: Date/Time
+  - name: DeepSeek
+  - name: DocuSign
+  - name: Domo
+  - name: Dropbox
+  - name: Duro PLM
+  - name: Expensify
+  - name: Firebase
+  - name: First Resonance ION
+  - name: Fluent Commerce
+  - name: Freshservice
+  - name: Frontify
+  - name: FTP
+  - name: GitHub
+  - name: Gmail
+  - name: Gong
+  - name: Google Ads
+  - name: Google Analytics - GA4
+  - name: Google Analytics - UA
+  - name: Google Cloud BigQuery
+  - name: Google Cloud Pub/Sub
+  - name: Google Cloud Storage
+  - name: Google Docs
+  - name: Google Drive
+  - name: Google Sheets
+  - name: Google Shopping
+  - name: Gorgias
+  - name: GoTo Webinar
+  - name: Greenhouse
+  - name: Guru
+  - name: Gusto
+  - name: Hash
+  - name: HiBob
+  - name: HTML Utils
+  - name: HTTP
+  - name: HubSpot
+  - name: IMAP
+  - name: Intercom
+  - name: Jira
+  - name: Jira Service Management
+  - name: JSON Forms
+  - name: JSONata
+  - name: Kafka
+  - name: Karbon
+  - name: Klaviyo
+  - name: Liquid Template
+  - name: Log
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
