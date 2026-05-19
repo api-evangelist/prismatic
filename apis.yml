@@ -517,8 +517,11 @@ common:
       - name: Fits Way You Build Software
     name: Benefits
     type: Benefits
+  - name: Agent Skills
+    url: https://github.com/prismatic-io/prismatic-skills
+    type: AgentSkill
 created: '2025-06-05'
-modified: '2026-04-28'
+modified: '2026-05-19'
 position: Consumer
 description: >-
   The most efficient way to build, deploy, and manage integrations. Prismatic empowers
