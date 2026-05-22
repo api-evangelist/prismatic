@@ -1,0 +1,45 @@
+{
+  "operationId": "executeGraphQLQuery",
+  "summary": "List All Integrations",
+  "request": {
+    "method": "POST",
+    "url": "https://app.prismatic.io/api",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.PLACEHOLDER",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "query": "query listIntegrations($first: Int) { integrations(first: $first) { nodes { id name description category versionNumber isCodeNative } } }",
+      "variables": { "first": 25 },
+      "operationName": "listIntegrations"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "data": {
+        "integrations": {
+          "nodes": [
+            {
+              "id": "SW50ZWdyYXRpb246YWJjMTIz",
+              "name": "Salesforce Lead Sync",
+              "description": "Syncs leads from a customer CRM into Salesforce.",
+              "category": "CRM",
+              "versionNumber": 7,
+              "isCodeNative": true
+            },
+            {
+              "id": "SW50ZWdyYXRpb246ZGVmNDU2",
+              "name": "Stripe Invoice Webhook",
+              "description": "Handles invoice.* webhooks from Stripe.",
+              "category": "Billing",
+              "versionNumber": 3,
+              "isCodeNative": false
+            }
+          ]
+        }
+      }
+    }
+  }
+}

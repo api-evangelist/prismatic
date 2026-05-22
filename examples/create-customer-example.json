@@ -1,0 +1,38 @@
+{
+  "operationId": "executeGraphQLQuery",
+  "summary": "Create A Customer",
+  "request": {
+    "method": "POST",
+    "url": "https://app.prismatic.io/api",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.PLACEHOLDER",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "query": "mutation createCustomer($name: String!, $externalId: String, $description: String) { createCustomer(input: { name: $name, externalId: $externalId, description: $description }) { customer { id name externalId description createdAt } errors { field messages } } }",
+      "variables": {
+        "name": "Initech",
+        "externalId": "initech-789",
+        "description": "Net-new tenant onboarded from sales handoff."
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "data": {
+        "createCustomer": {
+          "customer": {
+            "id": "Q3VzdG9tZXI6OTk5OTk5",
+            "name": "Initech",
+            "externalId": "initech-789",
+            "description": "Net-new tenant onboarded from sales handoff.",
+            "createdAt": "2026-05-22T14:11:02.000Z"
+          },
+          "errors": []
+        }
+      }
+    }
+  }
+}

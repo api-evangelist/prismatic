@@ -1,15 +1,41 @@
 aid: prismatic
 url: https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/apis.yml
+name: Prismatic
+description: The integration platform for B2B SaaS teams. Prismatic empowers everyone on your team
+  with integration tools for devs and non-devs alike, combining a code-native TypeScript SDK with a
+  low-code designer and an embedded marketplace for shipping customer-facing integrations.
+tags:
+- Embedded iPaaS
+- Integrations
+- Workflows
+- Connectors
+- AI Agents
+- MCP
+- Code-Native
+- Low-Code
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+position: Consumer
+created: '2025-06-05'
+modified: '2026-05-22'
+specificationVersion: '0.19'
 apis:
 - aid: prismatic:prismatics-graphql-api
   name: Prismatics GraphQL API
+  description: Prismatic provides a GraphQL-based API for you to build, deploy, and support your integrations
+    programmatically. While Prismatic recommends that new users use the web app or Prismatic CLI tool
+    (prism) to manage Prismatic resources, developer users will likely want to use the API to script
+    integration management, embed in CI/CD pipelines, and drive multi-tenant deployments.
+  humanURL: https://prismatic.io/docs/api/
   tags:
   - Connectors
   - Embedded SaaS
   - Embedded SaaS Integration
   - Integrations
   - Workflows
-  humanURL: https://prismatic.io/docs/api/
+  - GraphQL
+  - Management API
   properties:
   - url: openapi/prismatic-graphql-api-openapi.yml
     type: OpenAPI
@@ -18,11 +44,18 @@ apis:
   - url: https://prismatic.io/docs/api/authentication/
     name: Authentication | Prismatic Docs
     type: Authentication
-    description: 'null'
   - url: https://prismatic.io/docs/api/pagination/
-    name: Pagination with Prismatics API | Prismatic Docs
+    name: Pagination With Prismatics API | Prismatic Docs
     type: Pagination
-    description: 'null'
+  - url: https://prismatic.io/docs/explorer/
+    name: Prismatics GraphiQL Explorer | Prismatic Docs
+    type: Explorer
+  - url: rules/prismatic-graphql-api-rules.yml
+    type: SpectralRules
+  - url: vocabulary/prismatic-vocabulary.yml
+    type: Vocabulary
+  - url: json-ld/prismatic-context.jsonld
+    type: JSONLD
   - url: json-schema/customer.json
     type: JSONSchema
   - url: json-schema/integration.json
@@ -41,70 +74,120 @@ apis:
     type: JSONSchema
   - url: json-schema/execution.json
     type: JSONSchema
-  - url: json-ld/prismatic-context.jsonld
-    type: JSONLD
+  - url: json-structure/customer.json
+    type: JSONStructure
+  - url: json-structure/integration.json
+    type: JSONStructure
+  - url: json-structure/instance.json
+    type: JSONStructure
+  - url: json-structure/component.json
+    type: JSONStructure
+  - url: json-structure/flow.json
+    type: JSONStructure
+  - url: examples/list-customers-example.json
+    type: Example
+  - url: examples/list-integrations-example.json
+    type: Example
+  - url: examples/list-components-example.json
+    type: Example
+  - url: examples/list-instances-example.json
+    type: Example
+  - url: examples/create-customer-example.json
+    type: Example
+  - url: examples/refresh-token-example.json
+    type: Example
   - type: NaftikoCapability
     url: capabilities/graphql-authentication.yaml
   - type: NaftikoCapability
     url: capabilities/graphql-graphql.yaml
-  description: Prismatic provides a GraphQL-based API for you to build, deploy, and support your integrations programmatically.
-    While we recommend that new users use the web app or Prismatic CLI tool to manage Prismatic resources, developer users
-    will likely want to use the API to script out integration management.
-name: Prismatic
-tags:
-- Embedded iPaaS
-- Integrations
-- Workflows
-type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-access: 3rd-Party
 common:
-- type: LinkedIn
-  url: https://www.linkedin.com/company/prismatic-io
-- url: https://prismatic.io/docs/custom-connectors/
-  name: Custom Connectors Overview | Prismatic Docs
-  type: SDKs
-  description: 'null'
-- url: https://prismatic.io/docs/api/ci-cd-system/
-  name: Prismatics API in a CI/CD System | Prismatic Docs
-  type: CI/CD
-  description: 'null'
-- url: https://prismatic.io/docs/api/github-actions/
-  name: GitHub Actions | Prismatic Docs
-  type: GitHubActions
-  description: GitHub Actions
-- url: https://prismatic.io/docs/cli/
-  name: Prism CLI Overview | Prismatic Docs
-  type: CLI
-  description: 'null'
-- url: https://prismatic.io/docs/changelog/
-  name: Prismatic Changelog | Prismatic Docs
-  type: ChangeLog
-  description: 'null'
-- url: https://prismatic.io/docs/explorer/
-  name: Prismatics GraphiQL Explorer | Prismatic Docs
-  type: Explorer
-  description: 'null'
+- url: https://prismatic.io
+  type: Website
+- url: https://prismatic.io/docs/
+  type: Documentation
 - url: https://prismatic.io/docs/integrations/low-code-integration-designer/get-started/first-integration/
   name: Build Your First Integration | Prismatic Docs
   type: GettingStarted
-  description: 'null'
+- url: https://prismatic.io/docs/cli/
+  name: Prism CLI Overview | Prismatic Docs
+  type: CLI
+- url: https://www.npmjs.com/package/@prismatic-io/prism
+  name: '@prismatic-io/prism on npm'
+  type: CLI
+- url: https://www.npmjs.com/package/@prismatic-io/spectral
+  name: '@prismatic-io/spectral on npm'
+  type: SDK
+- url: https://www.npmjs.com/package/@prismatic-io/embedded
+  name: '@prismatic-io/embedded on npm'
+  type: SDK
+- url: https://prismatic.io/docs/custom-connectors/
+  name: Custom Connectors Overview | Prismatic Docs
+  type: SDKs
+- url: https://github.com/prismatic-io/spectral
+  name: Spectral TypeScript SDK
+  type: SDK
+- url: https://github.com/prismatic-io/embedded
+  name: Embedded SDK
+  type: SDK
+- url: https://github.com/prismatic-io/vscode
+  name: Prismatic VSCode/Cursor Extension
+  type: IDE
+- url: https://github.com/prismatic-io/terraform-provider-prismatic
+  name: Terraform Provider For Prismatic
+  type: Terraform
+- url: https://github.com/prismatic-io/prism-mcp
+  name: Prism MCP Server
+  type: MCP
+- url: https://github.com/prismatic-io/prismatic-skills
+  name: Prismatic Skills For Claude Code
+  type: AgentSkill
+- url: https://prismatic.io/docs/api/ci-cd-system/
+  name: Prismatics API In A CI/CD System | Prismatic Docs
+  type: CI/CD
+- url: https://prismatic.io/docs/api/github-actions/
+  name: GitHub Actions | Prismatic Docs
+  type: GitHubActions
+- url: https://prismatic.io/docs/changelog/
+  name: Prismatic Changelog | Prismatic Docs
+  type: ChangeLog
+- url: https://www.prismatic-status.io/
+  name: Prismatic Status
+  type: StatusPage
+- url: https://www.prismatic-status.io/history.rss
+  name: Status RSS Feed
+  type: RSS
+- url: https://www.prismatic-status.io/history.atom
+  name: Status Atom Feed
+  type: Atom
+- url: https://prismatic.io/blog/
+  name: Prismatic Blog
+  type: Blog
+- url: https://prismatic.io/pricing/
+  name: Prismatic Pricing
+  type: Pricing
+- url: plans/prismatic-plans-pricing.yml
+  type: Plans
+- url: rate-limits/prismatic-rate-limits.yml
+  type: RateLimits
+- url: finops/prismatic-finops.yml
+  type: FinOps
 - url: https://prismatic.io/legal/privacy/
   name: Privacy Policy | Prismatic
   type: PrivacyPolicy
-  description: 'null'
 - url: https://prismatic.io/legal/terms/
-  name: Terms of Use | Prismatic
+  name: Terms Of Use | Prismatic
   type: TermsOfService
-  description: 'null'
 - url: https://prismatic.io/legal/security/
   name: Security Policy | Prismatic
   type: Security
-  description: 'null'
 - url: https://github.com/prismatic-io
   name: GitHub Organization
   type: GitHubOrganization
+- url: https://www.linkedin.com/company/prismatic-io
+  type: LinkedIn
 - url: https://prismatic.io/connectors/
+  name: Connectors
+  type: Integrations
   data:
   - url: https://prismatic.io/connectors/ldap/
     name: Active Directory
@@ -472,7 +555,7 @@ common:
     name: WhatsApp
   - url: https://prismatic.io/connectors/woo-commerce/
     name: WooCommerce
-  - url: https://prismatic.io/connectors/workday/)
+  - url: https://prismatic.io/connectors/workday/
     name: Workday (Beta)
   - url: https://prismatic.io/connectors/xero/
     name: Xero
@@ -488,13 +571,14 @@ common:
     name: Zoho
   - url: https://prismatic.io/connectors/zoom/
     name: Zoom
-  name: Connectors
-  type: Integrations
-- data:
+- name: Features
+  type: Features
+  data:
   - name: Low-Code Integration Designer
   - name: Code-Native Integrations
   - name: Embedded Workflow Builder
-  - name: AI for Integrations
+  - name: AI Copilot For Workflow Builder
+  - name: AI Coding Agent Support (MCP Server)
   - name: Connectors
   - name: Integration Marketplace
   - name: Integration Configuration
@@ -502,9 +586,10 @@ common:
   - name: Integration Support
   - name: Integration Monitoring
   - name: Integration Management
-  name: Features
-  type: Features
-- data:
+  - name: Workflow Contexts
+- name: Benefits
+  type: Benefits
+  data:
   - name: Deliver Integrations Faster
   - name: Improve Customer Experience
   - name: Free Up Dev Time
@@ -515,119 +600,22 @@ common:
   - name: Offload Integration Compliance
   - name: Win Customers
   - name: Retain Customers
-  - name: Fits Way You Build Software
-  name: Benefits
-  type: Benefits
+  - name: Fits The Way You Build Software
 - name: Agent Skills
   url: https://github.com/prismatic-io/prismatic-skills
   type: AgentSkill
-created: '2025-06-05'
-modified: '2026-05-19'
-position: Consumer
-description: The most efficient way to build, deploy, and manage integrations. Prismatic empowers everyone on your team with
-  integration tools for devs and non-devs alike.
-integrations:
-- name: Calendly
-- name: Google Calendar
-- name: Azure Files
-- name: Amazon DynamoDB
-- name: Airtable
-- name: xAI Grok
-- name: Anthropic
-- name: Google Gemini
-- name: Azure OpenAI Service
-- name: OpenAI
-- name: Active Directory
-- name: Adobe Acrobat Sign
-- name: Adobe Analytics
-- name: Adobe Commerce Magento
-- name: Adobe I/O Events
-- name: Adobe Marketo Engage
-- name: ADP Workforce Now
-- name: Algolia
-- name: Amazon S3
-- name: Amazon Seller Central
-- name: Amazon SES
-- name: Amazon SNS
-- name: Amazon SQS
-- name: AMQP
-- name: ArcGIS
-- name: Arena PLM
-- name: Asana
-- name: Aspose
-- name: AWS Glue
-- name: AWS Lambda
-- name: Azure Blob Storage
-- name: Azure Cosmos DB
-- name: Azure Event Grid
-- name: Azure Service Bus
-- name: BambooHR
-- name: BigCommerce
-- name: Bill
-- name: Box
-- name: Branch
-- name: Bynder
-- name: Canny
-- name: Change Data Format
-- name: ClickUp
-- name: Code
-- name: Collection Tools
-- name: Confluence
-- name: Contentful
-- name: Cross Flow
-- name: CSV
-- name: Customer.io
-- name: Data Mapper
-- name: Databricks
-- name: Datadog
-- name: Date/Time
-- name: DeepSeek
-- name: DocuSign
-- name: Domo
-- name: Dropbox
-- name: Duro PLM
-- name: Expensify
-- name: Firebase
-- name: First Resonance ION
-- name: Fluent Commerce
-- name: Freshservice
-- name: Frontify
-- name: FTP
-- name: GitHub
-- name: Gmail
-- name: Gong
-- name: Google Ads
-- name: Google Analytics - GA4
-- name: Google Analytics - UA
-- name: Google Cloud BigQuery
-- name: Google Cloud Pub/Sub
-- name: Google Cloud Storage
-- name: Google Docs
-- name: Google Drive
-- name: Google Sheets
-- name: Google Shopping
-- name: Gorgias
-- name: GoTo Webinar
-- name: Greenhouse
-- name: Guru
-- name: Gusto
-- name: Hash
-- name: HiBob
-- name: HTML Utils
-- name: HTTP
-- name: HubSpot
-- name: IMAP
-- name: Intercom
-- name: Jira
-- name: Jira Service Management
-- name: JSON Forms
-- name: JSONata
-- name: Kafka
-- name: Karbon
-- name: Klaviyo
-- name: Liquid Template
-- name: Log
+- name: MCP Server
+  url: https://github.com/prismatic-io/prism-mcp
+  type: MCP
+- name: AI Agent Surfaces
+  type: AIAgent
+  data:
+  - name: AI Copilot For Embedded Workflow Builder
+    url: https://prismatic.io/docs/changelog/
+  - name: Prism MCP Server
+    url: https://github.com/prismatic-io/prism-mcp
+  - name: Prismatic Skills For Claude Code
+    url: https://github.com/prismatic-io/prismatic-skills
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-specificationVersion: '0.19'

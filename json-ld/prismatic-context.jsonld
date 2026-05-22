@@ -13,6 +13,8 @@
         "avatarUrl": "schema:image",
         "labels": "schema:keywords",
         "allowEmbeddedDesigner": "prismatic:allowEmbeddedDesigner",
+        "users": "prismatic:users",
+        "instances": "prismatic:instances",
         "createdAt": "schema:dateCreated",
         "updatedAt": "schema:dateModified"
       }
@@ -129,6 +131,25 @@
         "stepResults": "prismatic:stepResults",
         "startedAt": "schema:startTime",
         "endedAt": "schema:endTime"
+      }
+    },
+    "AIAgentSurface": {
+      "@id": "prismatic:AIAgentSurface",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "url": "schema:url",
+        "kind": "prismatic:agentSurfaceKind"
+      }
+    },
+    "MCPTool": {
+      "@id": "prismatic:MCPTool",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "transport": "prismatic:transport",
+        "endpoint": "schema:url",
+        "toolset": "prismatic:toolset"
       }
     }
   }

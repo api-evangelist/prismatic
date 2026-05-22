@@ -1,0 +1,25 @@
+{
+  "operationId": "refreshAuthToken",
+  "summary": "Refresh Authentication Token",
+  "request": {
+    "method": "POST",
+    "url": "https://app.prismatic.io/auth/refresh",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "refresh_token": "rt_PLACEHOLDER_REFRESH_TOKEN",
+      "tenant_id": "11111111-2222-3333-4444-555555555555"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "access_token": "eyJhbGciOiJIUzI1NiJ9.NEW_ACCESS_TOKEN",
+      "refresh_token": "rt_PLACEHOLDER_REFRESH_TOKEN",
+      "token_type": "Bearer",
+      "expires_in": 604800
+    }
+  }
+}

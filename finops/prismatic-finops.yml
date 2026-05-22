@@ -9,9 +9,9 @@ alignedWith:
 provider: Prismatic
 providerId: prismatic
 publisherName: Prismatic
-serviceCategory: API
+serviceCategory: Embedded iPaaS
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-22'
 tags:
   - Embedded iPaaS
   - Integrations
@@ -19,20 +19,22 @@ tags:
   - FinOps
   - Cost Management
   - FOCUS
-description: FinOps framework definition for the Prismatic API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+description: FinOps mapping for Prismatic. Prismatic is a per-instance-priced embedded iPaaS;
+  customers should track cost-per-deployed-instance, cost-per-active-customer, and execution
+  concurrency utilization. Because Prismatic's pricing is quote-based, unit-cost values must be
+  pulled from the customer's own MSA / order form rather than from a public rate card.
 principles:
   - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
+    description: Make per-customer integration cost visible to product, engineering, and finance.
   - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
+    description: Tag every deployed instance with the consuming customer, integration, environment,
+      and revenue-generating product line so cost can be allocated and unit-economics computed.
   - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
+    description: Continuously review which integrations and flows justify their per-instance and
+      execution concurrency cost; sunset unused instances.
   - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
+    description: Establish budget owners — typically the product manager for the customer-facing
+      integration surface — and chargeback / showback flows.
 domains:
   - name: Understand Usage and Cost
     capabilities:
@@ -49,20 +51,16 @@ domains:
       - Unit Economics
   - name: Optimize Usage and Cost
     capabilities:
-      - Architecting for Cloud
       - Rate Optimization
       - Workload Optimization
-      - Cloud Sustainability
       - Licensing and SaaS
   - name: Manage the FinOps Practice
     capabilities:
       - FinOps Practice Operations
-      - FinOps Education and Enablement
       - Invoicing and Chargeback
       - Onboarding Workloads
-      - Intersecting Disciplines
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Subscription + Usage
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
@@ -72,46 +70,55 @@ billingModel:
     - Credit
     - Adjustment
   chargeFrequency: Recurring
+  primaryUnit: deployed-instance
 focusColumns:
   ServiceName: Prismatic
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: Embedded iPaaS / Developer Tools
   ProviderName: Prismatic
   PublisherName: Prismatic
   InvoiceIssuerName: Prismatic
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PricingCategory: Subscription + Usage
+  PricingUnit: instance
   BillingCurrency: USD
   ChargeCategory: Usage
 meters:
+  - name: deployed_instances
+    description: Count of active deployed integration instances during the billing period.
+    unit: instance
+    aggregation: average
+    dimensions:
+      - integration
+      - customer
+      - environment
+      - region
+  - name: executions
+    description: Count of flow executions across all instances.
+    unit: execution
+    aggregation: sum
+    dimensions:
+      - integration
+      - customer
+      - flow
+      - environment
+  - name: execution_concurrency_peak
+    description: Peak concurrent executions observed during the period — drives plan tier choice.
+    unit: concurrent_execution
+    aggregation: max
+    dimensions:
+      - organization
+      - region
   - name: api_requests
-    description: Count of billable API requests
+    description: Calls against the Prismatic Management GraphQL API.
     unit: request
     aggregation: sum
     dimensions:
       - api
       - endpoint
       - tier
-      - region
       - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
 apis:
   - name: Prismatics GraphQL API
-    baseURL: ''
+    baseURL: https://app.prismatic.io/api
     tags:
       - Connectors
       - Embedded SaaS
@@ -119,13 +126,16 @@ apis:
       - Integrations
       - Workflows
     serviceName: Prismatics GraphQL API
-    serviceCategory: API
+    serviceCategory: Management API
 unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
+  - name: Cost Per Deployed Instance
+    metric: billed_cost / deployed_instances
     target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
+  - name: Cost Per Active Customer
+    metric: billed_cost / active_customers
+    target: TBD
+  - name: Cost Per 1K Executions
+    metric: billed_cost / (executions / 1000)
     target: TBD
 maintainers:
   - FN: Kin Lane

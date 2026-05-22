@@ -1,0 +1,161 @@
+extends:
+- spectral:oas
+
+rules:
+  # Operation summaries should exist and be in Title Case
+  prismatic-operation-summary-required:
+    description: Every operation MUST have a summary.
+    message: Operation must have a summary.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: summary
+      function: truthy
+
+  prismatic-operation-summary-title-case:
+    description: Operation summaries MUST be Title Case per the API Evangelist convention.
+    message: '{{property}} should be Title Case ({{value}}).'
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][A-Za-z0-9]*(\s+(?:[A-Z][A-Za-z0-9]*|[a-z]{1,3}|GraphQL|API|JWT|CLI|MCP|OAuth|REST|URL))*$'
+
+  prismatic-operation-summary-prefix:
+    description: Operation summaries SHOULD begin with the brand prefix "Prismatic".
+    message: Operation summary should be prefixed with "Prismatic ".
+    severity: hint
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^Prismatic '
+
+  # Every operation must have an operationId, in camelCase
+  prismatic-operation-id-required:
+    description: Every operation MUST have an operationId.
+    message: Operation must have an operationId.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+
+  prismatic-operation-id-camel-case:
+    description: operationId MUST be camelCase.
+    message: 'operationId should be camelCase (got: {{value}}).'
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]*$'
+
+  # Every operation must declare at least one tag
+  prismatic-operation-tags-required:
+    description: Every operation MUST have at least one tag.
+    message: Operation must have a tag.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+
+  prismatic-tags-title-case:
+    description: Tags MUST be Title Case.
+    message: '{{value}} should be Title Case.'
+    severity: warn
+    given: $.tags[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][A-Za-z0-9]*(\s+[A-Z][A-Za-z0-9]*)*$'
+
+  # Servers
+  prismatic-server-https:
+    description: All server URLs MUST use HTTPS.
+    message: 'Server URL must use https:// ({{value}}).'
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://'
+
+  prismatic-server-host:
+    description: All server URLs MUST be on the prismatic.io domain.
+    message: 'Server URL must be on prismatic.io ({{value}}).'
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: 'prismatic\.io'
+
+  # Security: bearerAuth must be defined and used
+  prismatic-bearer-auth-defined:
+    description: The bearerAuth security scheme MUST be defined.
+    message: components.securitySchemes.bearerAuth must be defined.
+    severity: error
+    given: $.components.securitySchemes
+    then:
+      field: bearerAuth
+      function: truthy
+
+  prismatic-non-auth-operations-require-bearer:
+    description: Non-auth operations SHOULD declare bearerAuth security.
+    message: This operation should declare bearerAuth in its security block.
+    severity: warn
+    given: $.paths[?(!@property.match(/^\/(auth|get_auth_token)/))][get,post,put,patch,delete]
+    then:
+      field: security
+      function: truthy
+
+  # Responses
+  prismatic-response-401-on-protected:
+    description: Protected operations SHOULD document a 401 response.
+    message: Protected operation should describe a 401 Unauthorized response.
+    severity: hint
+    given: $.paths[?(!@property.match(/^\/(auth|get_auth_token)/))][get,post,put,patch,delete].responses
+    then:
+      field: '401'
+      function: truthy
+
+  prismatic-response-429-on-graphql:
+    description: The GraphQL operation SHOULD document a 429 (rate limited) response.
+    message: GraphQL POST should describe a 429 response — Prismatic enforces ~20 req/s.
+    severity: warn
+    given: $.paths[/api].post.responses
+    then:
+      field: '429'
+      function: truthy
+
+  # Info object
+  prismatic-info-contact:
+    description: info.contact MUST be present.
+    message: info.contact must be defined.
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  prismatic-info-license:
+    description: info.license MUST be present.
+    message: info.license must be defined.
+    severity: warn
+    given: $.info
+    then:
+      field: license
+      function: truthy
+
+  # Schemas: GraphQL request shape
+  prismatic-graphql-request-has-query:
+    description: GraphQLRequest schema MUST require a `query` string field.
+    message: GraphQLRequest must require `query`.
+    severity: error
+    given: $.components.schemas.GraphQLRequest
+    then:
+      field: required
+      function: truthy

@@ -1,0 +1,51 @@
+{
+  "operationId": "executeGraphQLQuery",
+  "summary": "List All Customers",
+  "request": {
+    "method": "POST",
+    "url": "https://app.prismatic.io/api",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.PLACEHOLDER",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "query": "query listCustomers($first: Int, $after: String) { customers(first: $first, after: $after) { nodes { id name externalId description createdAt } pageInfo { hasNextPage endCursor } } }",
+      "variables": {
+        "first": 50
+      },
+      "operationName": "listCustomers"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "data": {
+        "customers": {
+          "nodes": [
+            {
+              "id": "Q3VzdG9tZXI6MWEyYjNjNGQ=",
+              "name": "Acme Corp",
+              "externalId": "acme-123",
+              "description": "Production tenant for Acme Corp",
+              "createdAt": "2026-01-15T17:22:11.000Z"
+            },
+            {
+              "id": "Q3VzdG9tZXI6NWU2ZjdnOGg=",
+              "name": "Globex Industries",
+              "externalId": "globex-456",
+              "description": "Sandbox tenant",
+              "createdAt": "2026-02-03T09:14:08.000Z"
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": true,
+            "endCursor": "Y3Vyc29yOjI="
+          }
+        }
+      }
+    }
+  }
+}

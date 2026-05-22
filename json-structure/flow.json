@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2025-01/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/json-structure/flow.json",
+  "title": "Prismatic Flow Structure",
+  "description": "JSON Structure representation of a Prismatic Flow — an ordered sequence of steps within an integration that begins with a trigger and executes connector actions.",
+  "type": "object",
+  "name": "Flow",
+  "required": ["name"],
+  "fields": {
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "stableKey": { "type": "string", "description": "Stable identifier used across versions." },
+    "isSynchronous": { "type": "boolean", "description": "True for request-response flows; false for fire-and-forget." },
+    "endpointSecurityType": { "type": "string", "description": "How the inbound webhook endpoint is authenticated." },
+    "steps": { "type": "array", "description": "Ordered list of step descriptors composing the flow." },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "operationId": "executeGraphQLQuery",
+  "summary": "List Available Components",
+  "request": {
+    "method": "POST",
+    "url": "https://app.prismatic.io/api",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.PLACEHOLDER",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "query": "query listComponents($first: Int) { components(first: $first) { nodes { id key label description authorizationRequired versionNumber isPublic } } }",
+      "variables": { "first": 100 }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "data": {
+        "components": {
+          "nodes": [
+            {
+              "id": "Q29tcG9uZW50OnNsYWNr",
+              "key": "slack",
+              "label": "Slack",
+              "description": "Send messages, manage channels, and react to events in Slack.",
+              "authorizationRequired": true,
+              "versionNumber": 31,
+              "isPublic": true
+            },
+            {
+              "id": "Q29tcG9uZW50Omh0dHA=",
+              "key": "http",
+              "label": "HTTP",
+              "description": "Issue HTTP requests to arbitrary endpoints.",
+              "authorizationRequired": false,
+              "versionNumber": 12,
+              "isPublic": true
+            }
+          ]
+        }
+      }
+    }
+  }
+}

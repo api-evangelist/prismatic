@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2025-01/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/json-structure/integration.json",
+  "title": "Prismatic Integration Structure",
+  "description": "JSON Structure representation of a Prismatic Integration — a workflow definition that can be deployed as instances to customers. Integrations can be built in the low-code designer or written as code-native (CNI) projects.",
+  "type": "object",
+  "name": "Integration",
+  "required": ["id", "name"],
+  "fields": {
+    "id": { "type": "string", "description": "Globally unique integration ID." },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "category": { "type": "string" },
+    "overview": { "type": "string", "description": "Long-form marketplace description." },
+    "labels": { "type": "array", "items": { "type": "string" } },
+    "versionNumber": { "type": "integer" },
+    "versionIsAvailable": { "type": "boolean" },
+    "isCodeNative": { "type": "boolean", "description": "True when the integration is authored with the Spectral TypeScript SDK (CNI)." },
+    "marketplaceConfiguration": { "type": "string", "enum": ["AVAILABLE", "HIDDEN"] },
+    "flows": { "type": "array", "ref": "flow.json" },
+    "instances": { "type": "array", "ref": "instance.json" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

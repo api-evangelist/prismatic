@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2025-01/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/json-structure/instance.json",
+  "title": "Prismatic Instance Structure",
+  "description": "JSON Structure representation of a Prismatic Instance — a customer-specific deployment of an Integration with its own config variables and flow configuration.",
+  "type": "object",
+  "name": "Instance",
+  "required": ["id", "name"],
+  "fields": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "enabled": { "type": "boolean" },
+    "deployed": { "type": "boolean" },
+    "needsDeploy": { "type": "boolean" },
+    "customer": { "ref": "customer.json" },
+    "integration": { "ref": "integration.json" },
+    "configVariables": { "type": "array", "ref": "config-variable.json" },
+    "flowConfigs": { "type": "array", "description": "Per-flow configuration including endpoint URLs and security." },
+    "labels": { "type": "array", "items": { "type": "string" } },
+    "lastDeployedAt": { "type": "string", "format": "date-time" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

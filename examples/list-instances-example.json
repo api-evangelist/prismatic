@@ -1,0 +1,37 @@
+{
+  "operationId": "executeGraphQLQuery",
+  "summary": "List All Instances",
+  "request": {
+    "method": "POST",
+    "url": "https://app.prismatic.io/api",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.PLACEHOLDER",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "query": "query listInstances($first: Int) { instances(first: $first) { nodes { id name enabled deployed customer { id name } integration { id name } lastDeployedAt } } }",
+      "variables": { "first": 25 }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "data": {
+        "instances": {
+          "nodes": [
+            {
+              "id": "SW5zdGFuY2U6aW5zdC0xMjM=",
+              "name": "Acme - Salesforce Lead Sync",
+              "enabled": true,
+              "deployed": true,
+              "customer": { "id": "Q3VzdG9tZXI6MWEyYjNjNGQ=", "name": "Acme Corp" },
+              "integration": { "id": "SW50ZWdyYXRpb246YWJjMTIz", "name": "Salesforce Lead Sync" },
+              "lastDeployedAt": "2026-05-18T22:01:09.000Z"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

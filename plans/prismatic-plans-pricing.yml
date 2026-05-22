@@ -4,136 +4,138 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Prismatic
 providerId: prismatic
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-22'
 tags:
   - Embedded iPaaS
   - Integrations
   - Workflows
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Pricing
+description: Machine-readable representation of Prismatic's commercial offering as published on
+  https://prismatic.io/pricing/. Prismatic publishes three tiers (Scale, Enterprise, Custom). All
+  three are quote-based — Prismatic does not list per-seat or per-instance dollar amounts on the
+  public pricing page; every tier directs prospects to a "Schedule my demo" CTA. Tier features
+  below reflect what is publicly enumerated on the pricing page.
+publicPricingURL: https://prismatic.io/pricing/
+pricingModel: quote-based
 plans:
-  - id: prismatic-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Prismatic API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Prismatics GraphQL API
-  - id: prismatic-pro
-    name: Professional
+  - id: prismatic-scale
+    name: Scale
     type: paid
-    description: Production tier for Prismatic. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+    description: Entry commercial tier. Covers code-native and low-code building, AI-enabled
+      development including MCP server support, embedded marketplace, fully managed authentication,
+      and a dedicated account manager. Pricing is volume per-instance and is not published.
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
+      - label: Integrations
+        description: No limit on number of integrations authored.
+        name: integrations
         type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
+        metric: integrations
         limit: -1
         timeFrame: month
         geo: global
-        domains: []
-        unit: 1000
-        price: TBD
-        userMultiplied: false
+        unit: 1
+        price: included
+      - label: Customers
+        description: No limit on number of customers deployed to.
+        name: customers
+        type: quota
+        metric: customers
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+      - label: Per-Instance Price
+        description: Charged per deployed instance; rate is volume-based and not publicly listed.
+        name: per_instance
+        type: metered
+        metric: instance
+        limit: -1
+        timeFrame: month
+        unit: 1
+        price: quote
+      - label: Execution Concurrency
+        description: Standard concurrency ceiling for flow executions.
+        name: execution_concurrency
+        type: rate
+        metric: concurrent_executions
+        limit: standard
+        timeFrame: second
+        unit: 1
+        price: included
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Prismatics GraphQL API
+      - name: Unlimited Team Members
+      - name: Unlimited Customers
+      - name: Unlimited Integrations
+      - name: Unlimited Connectors / Components
+      - name: Multi-Region Hosting
+      - name: Code-Native And Low-Code Building Tools
+      - name: AI-Enabled Development With MCP Server Support
+      - name: Embedded Integration Marketplace
+      - name: Fully Managed Authentication
+      - name: Dedicated Account Manager
   - id: prismatic-enterprise
     name: Enterprise
     type: enterprise
-    description: Custom-negotiated tier for Prismatic. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
+    description: Mid-market tier. Adds higher execution concurrency, private and GovCloud hosting,
+      the embedded workflow builder, on-prem connectivity, team SSO, and custom log retention.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: Execution Concurrency
+        description: Elevated concurrency ceiling for flow executions.
+        name: execution_concurrency
+        type: rate
+        metric: concurrent_executions
+        limit: high
+        timeFrame: second
+        unit: 1
+        price: included
+      - label: Per-Instance Price
+        description: Volume per-instance pricing, negotiated.
+        name: per_instance
+        type: metered
+        metric: instance
         limit: -1
         timeFrame: month
-        geo: configurable
-        domains: []
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
+        price: quote
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Prismatics GraphQL API
+      - name: Everything In Scale
+      - name: High Execution Concurrency Limits
+      - name: Private And GovCloud Hosting
+      - name: Embedded Workflow Builder
+      - name: On-Prem Connectivity
+      - name: Team Member SSO
+      - name: Custom Log Retention
+  - id: prismatic-custom
+    name: Custom
+    type: enterprise
+    description: Custom-negotiated tier covering bespoke execution concurrency, instance pricing,
+      SLAs, and legal/compliance review.
+    entries:
+      - label: Execution Concurrency
+        description: Custom concurrency negotiated per contract.
+        name: execution_concurrency
+        type: rate
+        metric: concurrent_executions
+        limit: custom
+        timeFrame: second
+        unit: 1
+        price: quote
+      - label: Per-Instance Price
+        description: Custom pricing per instance.
+        name: per_instance
+        type: metered
+        metric: instance
+        limit: -1
+        timeFrame: month
+        unit: 1
+        price: custom
+    elements:
+      - name: Everything In Enterprise
+      - name: Custom Execution Concurrency Limits
+      - name: Custom Instance Pricing
+      - name: Custom SLAs
+      - name: Custom Legal And Compliance Review
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

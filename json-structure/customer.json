@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2025-01/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/json-structure/customer.json",
+  "title": "Prismatic Customer Structure",
+  "description": "JSON Structure representation of a Prismatic Customer — a company or organization that uses your product and to which integration instances are deployed.",
+  "type": "object",
+  "name": "Customer",
+  "required": ["id", "name"],
+  "fields": {
+    "id": { "type": "string", "description": "Globally unique relay-style customer ID." },
+    "name": { "type": "string", "description": "Display name of the customer organization." },
+    "description": { "type": "string", "description": "Free-text description of the customer." },
+    "externalId": { "type": "string", "description": "Customer identifier as known in your own system." },
+    "avatarUrl": { "type": "string", "format": "uri", "description": "Customer avatar image URL." },
+    "labels": { "type": "array", "items": { "type": "string" }, "description": "Tags applied to the customer." },
+    "allowEmbeddedDesigner": { "type": "boolean", "description": "Whether the embedded designer is enabled for this customer." },
+    "users": { "type": "array", "ref": "user.json", "description": "Users belonging to the customer." },
+    "instances": { "type": "array", "ref": "instance.json", "description": "Integration instances deployed to the customer." },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

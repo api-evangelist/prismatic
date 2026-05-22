@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-structure.org/draft/2025-01/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/json-structure/component.json",
+  "title": "Prismatic Component Structure",
+  "description": "JSON Structure representation of a Prismatic Component (connector) — a reusable bundle of actions, triggers, data sources, and connections that integrations call. Prismatic ships hundreds of public components and customers can author private components with the Spectral SDK.",
+  "type": "object",
+  "name": "Component",
+  "required": ["id", "key", "label"],
+  "fields": {
+    "id": { "type": "string" },
+    "key": { "type": "string", "description": "Machine identifier (e.g. slack, http, salesforce)." },
+    "label": { "type": "string" },
+    "description": { "type": "string" },
+    "category": { "type": "string" },
+    "isPublic": { "type": "boolean", "description": "True for components published by Prismatic; false for org-owned components." },
+    "authorizationRequired": { "type": "boolean" },
+    "iconUrl": { "type": "string", "format": "uri" },
+    "versionNumber": { "type": "integer" },
+    "actions": { "type": "array", "description": "Action descriptors callable from flows." },
+    "triggers": { "type": "array", "description": "Trigger descriptors that start flows." },
+    "dataSources": { "type": "array", "description": "Data source descriptors used in config wizards." },
+    "connections": { "type": "array", "description": "Connection types (OAuth, API key, basic, etc.)." },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

@@ -1,0 +1,120 @@
+name: Prismatic Vocabulary
+description: Vocabulary mapping for Prismatic's embedded iPaaS surface — the platform, its GraphQL
+  management API, its CLI, SDKs, and AI/agent surfaces. Each term describes a first-class concept
+  in the Prismatic platform along with the operational and capability dimension it represents.
+provider: Prismatic
+providerId: prismatic
+version: '0.1'
+created: '2026-05-22'
+modified: '2026-05-22'
+
+namespaces:
+  prismatic: https://prismatic.io/docs/api/schema/
+  schema: https://schema.org/
+
+dimensions:
+- name: Tenancy
+  description: Multi-tenant concepts — how Prismatic models the customer relationship.
+- name: Composition
+  description: How integrations and workflows are assembled from connectors, actions, and triggers.
+- name: Deployment
+  description: How integrations move from authored to deployed state in a customer environment.
+- name: Operations
+  description: Runtime observability — executions, alerts, logs.
+- name: Authoring
+  description: How integrations are authored — low-code designer, code-native SDK, embedded builder.
+- name: Distribution
+  description: How integrations reach end customers — marketplace, embedded experiences.
+- name: AI And Agents
+  description: AI and MCP-adjacent surfaces for building, running, and tooling integrations.
+
+terms:
+- term: Customer
+  definition: A company or organization that uses your product and has integrations deployed to them.
+  dimension: Tenancy
+  uri: https://prismatic.io/docs/api/schema/Customer
+- term: User
+  definition: A user belonging to a customer organization, scoped to that customer.
+  dimension: Tenancy
+  uri: https://prismatic.io/docs/api/schema/User
+- term: Organization
+  definition: The Prismatic-side tenant — the account that authors integrations.
+  dimension: Tenancy
+- term: Integration
+  definition: A versioned workflow definition assembled from one or more flows.
+  dimension: Composition
+  uri: https://prismatic.io/docs/api/schema/Integration
+- term: Flow
+  definition: A trigger-led ordered sequence of steps within an integration.
+  dimension: Composition
+  uri: https://prismatic.io/docs/api/schema/Flow
+- term: Component
+  definition: A connector bundle exposing actions, triggers, data sources, and connections.
+  dimension: Composition
+  synonyms: [Connector]
+  uri: https://prismatic.io/docs/api/schema/Component
+- term: Action
+  definition: A single callable operation on a component, invoked from a step.
+  dimension: Composition
+- term: Trigger
+  definition: A component capability that starts a flow (webhook, schedule, polling, etc.).
+  dimension: Composition
+- term: Connection
+  definition: A configured credential (OAuth, API key, basic auth) used by a component at runtime.
+  dimension: Composition
+- term: Config Variable
+  definition: A per-instance configuration value supplied by the customer or built-in.
+  dimension: Deployment
+  uri: https://prismatic.io/docs/api/schema/ConfigVariable
+- term: Instance
+  definition: A deployed copy of an integration bound to a specific customer and configuration.
+  dimension: Deployment
+  uri: https://prismatic.io/docs/api/schema/Instance
+- term: Marketplace
+  definition: The customer-facing catalog of integrations available for self-service activation.
+  dimension: Distribution
+- term: Embedded Designer
+  definition: The low-code integration designer surfaced inside the host application.
+  dimension: Distribution
+- term: Embedded Workflow Builder
+  definition: A customer-facing builder for assembling per-customer workflows on top of provided primitives.
+  dimension: Distribution
+- term: Workflow Context
+  definition: Pre-configured triggers and runtime data scoping a customer's workflow-builder experience.
+  dimension: Distribution
+- term: Low-Code Designer
+  definition: The visual canvas where integrations are assembled by selecting components and steps.
+  dimension: Authoring
+- term: Code-Native Integration
+  definition: An integration authored as TypeScript code using the Spectral SDK and deployed via the CLI.
+  dimension: Authoring
+  synonyms: [CNI]
+- term: Spectral SDK
+  definition: The @prismatic-io/spectral TypeScript library for building components and CNIs.
+  dimension: Authoring
+- term: Custom Connector
+  definition: An organization-owned component published from Spectral source.
+  dimension: Authoring
+- term: Prism CLI
+  definition: The @prismatic-io/prism command-line tool for managing every Prismatic resource.
+  dimension: Authoring
+- term: Execution
+  definition: A single run of a flow, with timing, status, and step-by-step results.
+  dimension: Operations
+  uri: https://prismatic.io/docs/api/schema/Execution
+- term: Alert Monitor
+  definition: A configured monitor that emits an alert when a condition is met on an instance.
+  dimension: Operations
+  uri: https://prismatic.io/docs/api/schema/AlertMonitor
+- term: AI Copilot
+  definition: Natural-language assistant inside the workflow builder that proposes connections, triggers, and actions.
+  dimension: AI And Agents
+- term: Prism MCP Server
+  definition: A local Model Context Protocol server that exposes Prismatic dev tools to AI coding agents.
+  dimension: AI And Agents
+- term: Prismatic Skills
+  definition: An open-source Claude Code plugin bundling specialized agent skills (component-builder, cni-builder, migration-analyzer, etc.).
+  dimension: AI And Agents
+- term: Integration As MCP Tool
+  definition: A Prismatic integration surfaced to an AI agent as a callable MCP tool with typed inputs.
+  dimension: AI And Agents
