@@ -616,6 +616,8 @@ common:
     url: https://github.com/prismatic-io/prism-mcp
   - name: Prismatic Skills For Claude Code
     url: https://github.com/prismatic-io/prismatic-skills
+- type: LLMsTxt
+  url: https://prismatic.io/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
