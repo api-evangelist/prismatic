@@ -1,0 +1,87 @@
+arazzo: 1.0.1
+info:
+  title: Prismatic Create Customer with Refreshed Token
+  summary: Refresh an access token then create a new customer tenant.
+  description: >-
+    Embedded integration providers onboard each of their end users as a
+    Prismatic customer. This workflow first refreshes the JWT access token from a
+    supplied refresh token, then runs the documented createCustomer GraphQL
+    mutation with the new customer's name and externalId carried as GraphQL
+    variables. Note: Prismatic is a GraphQL-over-HTTP API, so the create
+    operation is sent through the single executeGraphQLQuery endpoint and the
+    mutation body is taken from the specification's documented createCustomer
+    example.
+  version: 1.0.0
+sourceDescriptions:
+- name: prismaticGraphqlApi
+  url: ../openapi/prismatic-graphql-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-customer
+  summary: Create a new customer tenant after refreshing the access token.
+  description: >-
+    Refreshes the access token then issues the documented createCustomer GraphQL
+    mutation, returning the new customer id, name and externalId.
+  inputs:
+    type: object
+    required:
+    - refreshToken
+    - name
+    properties:
+      refreshToken:
+        type: string
+        description: A valid Prismatic refresh token used to mint a new access token.
+      name:
+        type: string
+        description: The display name of the customer tenant to create.
+      externalId:
+        type: string
+        description: >-
+          An optional external identifier that links this customer back to the
+          provider's own system of record.
+  steps:
+  - stepId: refreshToken
+    description: Exchange the supplied refresh token for a fresh JWT access token.
+    operationId: refreshAuthToken
+    requestBody:
+      contentType: application/json
+      payload:
+        refresh_token: $inputs.refreshToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      accessToken: $response.body#/access_token
+  - stepId: createCustomer
+    description: >-
+      Run the documented createCustomer GraphQL mutation, passing the name and
+      externalId as GraphQL variables and authenticating with the refreshed
+      bearer token.
+    operationId: executeGraphQLQuery
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $steps.refreshToken.outputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        query: >-
+          mutation createCustomer($name: String!, $externalId: String) {
+            createCustomer(input: { name: $name, externalId: $externalId }) {
+              customer {
+                id
+                name
+                externalId
+              }
+            }
+          }
+        variables:
+          name: $inputs.name
+          externalId: $inputs.externalId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      customer: $response.body#/data/createCustomer/customer
+      customerId: $response.body#/data/createCustomer/customer/id
+  outputs:
+    customerId: $steps.createCustomer.outputs.customerId
+    customer: $steps.createCustomer.outputs.customer

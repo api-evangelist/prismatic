@@ -1,0 +1,79 @@
+arazzo: 1.0.1
+info:
+  title: Prismatic Browser Session List Components
+  summary: Get a short-lived token from an active web session, then list components.
+  description: >-
+    Supports the interactive scenario where a user already logged in to the
+    Prismatic web application wants to drive the API from the browser. The flow
+    first calls the get_auth_token endpoint, which uses the session cookie to
+    return a short-lived JWT, then uses that JWT as an inline bearer credential to
+    run the documented listComponents GraphQL query and enumerate every available
+    connector. Note: Prismatic is a GraphQL-over-HTTP API, so the component list
+    is a request body sent through the single executeGraphQLQuery endpoint with
+    the query string taken from the specification examples.
+  version: 1.0.0
+sourceDescriptions:
+- name: prismaticGraphqlApi
+  url: ../openapi/prismatic-graphql-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: browser-session-list-components
+  summary: Mint a short-lived token from the web session then list all components.
+  description: >-
+    Retrieves a short-lived JWT via the cookie-authenticated get_auth_token
+    endpoint and then runs the documented listComponents GraphQL query, returning
+    the component nodes with id, label, description, key and
+    authorizationRequired.
+  inputs:
+    type: object
+    properties:
+      sessionCookie:
+        type: string
+        description: >-
+          The Prismatic web application session cookie used to authorize the
+          short-lived token request.
+  steps:
+  - stepId: getShortLivedToken
+    description: >-
+      Retrieve a short-lived JWT using the active web application session
+      cookie.
+    operationId: getAuthToken
+    parameters:
+    - name: Cookie
+      in: header
+      value: "session=$inputs.sessionCookie"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      accessToken: $response.body#/access_token
+  - stepId: listComponents
+    description: >-
+      Run the documented listComponents GraphQL query using the short-lived
+      bearer token.
+    operationId: executeGraphQLQuery
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $steps.getShortLivedToken.outputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        query: >-
+          query listComponents {
+            components {
+              nodes {
+                id
+                label
+                description
+                key
+                authorizationRequired
+              }
+            }
+          }
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      components: $response.body#/data/components/nodes
+  outputs:
+    accessToken: $steps.getShortLivedToken.outputs.accessToken
+    components: $steps.listComponents.outputs.components

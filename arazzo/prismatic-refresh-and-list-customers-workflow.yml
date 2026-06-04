@@ -1,0 +1,79 @@
+arazzo: 1.0.1
+info:
+  title: Prismatic Refresh Token and List Customers
+  summary: Exchange a refresh token for a fresh access token, then list all customers.
+  description: >-
+    A foundational embedded-integration workflow that prepares an authenticated
+    session before reading tenant data. The flow first exchanges a long-lived
+    refresh token for a fresh JWT access token through the dedicated auth
+    endpoint, then uses that access token as an inline bearer credential to run
+    the documented listCustomers GraphQL query against the single Prismatic
+    GraphQL endpoint. Note: Prismatic exposes a GraphQL-over-HTTP API where every
+    read and write is sent through one operationId (executeGraphQLQuery); the
+    distinct GraphQL operation is expressed entirely in the request body query
+    string drawn from the specification examples.
+  version: 1.0.0
+sourceDescriptions:
+- name: prismaticGraphqlApi
+  url: ../openapi/prismatic-graphql-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: refresh-and-list-customers
+  summary: Refresh the access token then enumerate every customer tenant.
+  description: >-
+    Refreshes the JWT access token from a supplied refresh token and then issues
+    the documented listCustomers GraphQL query, returning the array of customer
+    nodes with id, name and externalId.
+  inputs:
+    type: object
+    required:
+    - refreshToken
+    properties:
+      refreshToken:
+        type: string
+        description: A valid Prismatic refresh token used to mint a new access token.
+  steps:
+  - stepId: refreshToken
+    description: >-
+      Exchange the supplied refresh token for a fresh JWT access token valid for
+      seven days.
+    operationId: refreshAuthToken
+    requestBody:
+      contentType: application/json
+      payload:
+        refresh_token: $inputs.refreshToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      accessToken: $response.body#/access_token
+      tokenType: $response.body#/token_type
+      expiresIn: $response.body#/expires_in
+  - stepId: listCustomers
+    description: >-
+      Run the documented listCustomers GraphQL query using the freshly minted
+      access token as an inline bearer credential.
+    operationId: executeGraphQLQuery
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $steps.refreshToken.outputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        query: >-
+          query listCustomers {
+            customers {
+              nodes {
+                id
+                name
+                externalId
+              }
+            }
+          }
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      customers: $response.body#/data/customers/nodes
+  outputs:
+    accessToken: $steps.refreshToken.outputs.accessToken
+    customers: $steps.listCustomers.outputs.customers

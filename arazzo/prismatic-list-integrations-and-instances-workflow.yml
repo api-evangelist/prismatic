@@ -1,0 +1,95 @@
+arazzo: 1.0.1
+info:
+  title: Prismatic List Integrations and Deployed Instances
+  summary: List all integrations, then list the deployed instances that reference them.
+  description: >-
+    Provides a complete picture of what has been built versus what is actually
+    deployed. The flow first runs the documented listIntegrations GraphQL query
+    to enumerate every integration definition, then runs the documented
+    listInstances GraphQL query to enumerate the instances deployed to customers,
+    each of which carries its parent customer and integration. Both reads share a
+    single inline bearer credential. Note: Prismatic is a GraphQL-over-HTTP API,
+    so each read is a separate request body sent through the single
+    executeGraphQLQuery endpoint, with the query strings taken from the
+    specification examples.
+  version: 1.0.0
+sourceDescriptions:
+- name: prismaticGraphqlApi
+  url: ../openapi/prismatic-graphql-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: list-integrations-and-instances
+  summary: Enumerate integration definitions and their deployed instances.
+  description: >-
+    Runs the documented listIntegrations and listInstances GraphQL queries in
+    sequence using the supplied access token, returning both the integration
+    nodes and the instance nodes with their customer and integration references.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    properties:
+      accessToken:
+        type: string
+        description: A valid Prismatic JWT access token to authenticate the queries.
+  steps:
+  - stepId: listIntegrations
+    description: Run the documented listIntegrations GraphQL query.
+    operationId: executeGraphQLQuery
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        query: >-
+          query listIntegrations {
+            integrations {
+              nodes {
+                id
+                name
+                description
+              }
+            }
+          }
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      integrations: $response.body#/data/integrations/nodes
+  - stepId: listInstances
+    description: >-
+      Run the documented listInstances GraphQL query to enumerate deployed
+      instances and their customer and integration references.
+    operationId: executeGraphQLQuery
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        query: >-
+          query listInstances {
+            instances {
+              nodes {
+                id
+                name
+                customer {
+                  id
+                  name
+                }
+                integration {
+                  id
+                  name
+                }
+              }
+            }
+          }
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      instances: $response.body#/data/instances/nodes
+  outputs:
+    integrations: $steps.listIntegrations.outputs.integrations
+    instances: $steps.listInstances.outputs.instances

@@ -1,0 +1,115 @@
+arazzo: 1.0.1
+info:
+  title: Prismatic Onboard and Verify Customer
+  summary: Create a customer, branch on GraphQL errors, then verify it appears in the customer list.
+  description: >-
+    A robust onboarding flow for embedded integration providers. It runs the
+    documented createCustomer GraphQL mutation, then branches on the shape of the
+    GraphQL response: when the response carries a top-level errors array the flow
+    routes to a failure end, and when it does not the flow proceeds to run the
+    documented listCustomers query and confirm the new customer is present. Note:
+    Prismatic is a GraphQL-over-HTTP API, so both the mutation and the verifying
+    query are request bodies sent through the single executeGraphQLQuery
+    endpoint; success and failure are distinguished using the documented errors
+    field rather than distinct HTTP status codes, since the GraphQL endpoint
+    documents a single 200 response.
+  version: 1.0.0
+sourceDescriptions:
+- name: prismaticGraphqlApi
+  url: ../openapi/prismatic-graphql-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: onboard-and-verify-customer
+  summary: Create a customer, detect GraphQL errors, and verify it in the customer list.
+  description: >-
+    Issues the createCustomer mutation and inspects the GraphQL response. If a
+    GraphQL errors array is present the flow ends in failure; otherwise it runs
+    listCustomers to confirm the new customer was persisted.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - name
+    properties:
+      accessToken:
+        type: string
+        description: A valid Prismatic JWT access token to authenticate the operations.
+      name:
+        type: string
+        description: The display name of the customer tenant to create.
+      externalId:
+        type: string
+        description: An optional external identifier linking the customer to the provider's system.
+  steps:
+  - stepId: createCustomer
+    description: >-
+      Run the documented createCustomer GraphQL mutation and branch on whether
+      the GraphQL response includes an errors array.
+    operationId: executeGraphQLQuery
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        query: >-
+          mutation createCustomer($name: String!, $externalId: String) {
+            createCustomer(input: { name: $name, externalId: $externalId }) {
+              customer {
+                id
+                name
+                externalId
+              }
+            }
+          }
+        variables:
+          name: $inputs.name
+          externalId: $inputs.externalId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      customerId: $response.body#/data/createCustomer/customer/id
+    onSuccess:
+    - name: creationFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.errors.length > 0
+        type: jsonpath
+    - name: creationSucceeded
+      type: goto
+      stepId: verifyCustomer
+      criteria:
+      - context: $response.body
+        condition: $.data.createCustomer.customer.id != null
+        type: jsonpath
+  - stepId: verifyCustomer
+    description: >-
+      Run the documented listCustomers GraphQL query to confirm the newly
+      created customer is present in the tenant list.
+    operationId: executeGraphQLQuery
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        query: >-
+          query listCustomers {
+            customers {
+              nodes {
+                id
+                name
+                externalId
+              }
+            }
+          }
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      customers: $response.body#/data/customers/nodes
+  outputs:
+    customerId: $steps.createCustomer.outputs.customerId
+    customers: $steps.verifyCustomer.outputs.customers

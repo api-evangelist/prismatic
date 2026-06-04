@@ -1,0 +1,85 @@
+arazzo: 1.0.1
+info:
+  title: Prismatic Rotate Refresh Token
+  summary: Refresh an access token, use it, then revoke the old refresh token.
+  description: >-
+    Implements a secure credential rotation pattern. The flow exchanges the
+    current refresh token for a fresh access token, immediately exercises that
+    access token against the documented listCustomers GraphQL query to confirm it
+    works, and then revokes the original refresh token so it can no longer be used
+    to mint new access tokens. Note: Prismatic exposes dedicated auth endpoints
+    for refresh and revoke, while the data read is a request body sent through the
+    single GraphQL-over-HTTP executeGraphQLQuery endpoint.
+  version: 1.0.0
+sourceDescriptions:
+- name: prismaticGraphqlApi
+  url: ../openapi/prismatic-graphql-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: rotate-refresh-token
+  summary: Refresh, validate, and then revoke the prior refresh token.
+  description: >-
+    Refreshes the access token from the supplied refresh token, validates it with
+    a listCustomers query, and finally revokes the original refresh token.
+  inputs:
+    type: object
+    required:
+    - refreshToken
+    properties:
+      refreshToken:
+        type: string
+        description: The current Prismatic refresh token to rotate out.
+  steps:
+  - stepId: refreshToken
+    description: Exchange the current refresh token for a fresh JWT access token.
+    operationId: refreshAuthToken
+    requestBody:
+      contentType: application/json
+      payload:
+        refresh_token: $inputs.refreshToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      accessToken: $response.body#/access_token
+  - stepId: validateToken
+    description: >-
+      Validate the new access token by running the documented listCustomers
+      GraphQL query.
+    operationId: executeGraphQLQuery
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $steps.refreshToken.outputs.accessToken"
+    requestBody:
+      contentType: application/json
+      payload:
+        query: >-
+          query listCustomers {
+            customers {
+              nodes {
+                id
+                name
+                externalId
+              }
+            }
+          }
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      customers: $response.body#/data/customers/nodes
+  - stepId: revokeOldToken
+    description: >-
+      Revoke the original refresh token now that a validated access token is in
+      hand.
+    operationId: revokeAuthToken
+    requestBody:
+      contentType: application/json
+      payload:
+        refresh_token: $inputs.refreshToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      revokedStatus: $statusCode
+  outputs:
+    accessToken: $steps.refreshToken.outputs.accessToken
+    revokedStatus: $steps.revokeOldToken.outputs.revokedStatus

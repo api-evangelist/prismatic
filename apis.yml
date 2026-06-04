@@ -101,6 +101,30 @@ apis:
   - type: NaftikoCapability
     url: capabilities/graphql-graphql.yaml
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/prismatic-browser-session-list-components-workflow.yml
+    name: Prismatic Browser Session List Components
+    summary: Get a short-lived token from an active web session, then list components.
+  - url: arazzo/prismatic-create-customer-workflow.yml
+    name: Prismatic Create Customer with Refreshed Token
+    summary: Refresh an access token then create a new customer tenant.
+  - url: arazzo/prismatic-list-integrations-and-instances-workflow.yml
+    name: Prismatic List Integrations and Deployed Instances
+    summary: List all integrations, then list the deployed instances that reference them.
+  - url: arazzo/prismatic-onboard-and-verify-customer-workflow.yml
+    name: Prismatic Onboard and Verify Customer
+    summary: Create a customer, branch on GraphQL errors, then verify it appears in the customer list.
+  - url: arazzo/prismatic-refresh-and-list-customers-workflow.yml
+    name: Prismatic Refresh Token and List Customers
+    summary: Exchange a refresh token for a fresh access token, then list all customers.
+  - url: arazzo/prismatic-rotate-refresh-token-workflow.yml
+    name: Prismatic Rotate Refresh Token
+    summary: Refresh an access token, use it, then revoke the old refresh token.
+  - url: arazzo/prismatic-tenant-inventory-snapshot-workflow.yml
+    name: Prismatic Tenant Inventory Snapshot
+    summary: Capture a full snapshot of customers, integrations, and instances in one pass.
 - url: https://prismatic.io
   type: Website
 - url: https://prismatic.io/docs/
