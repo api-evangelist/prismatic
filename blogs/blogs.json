@@ -2,20 +2,20 @@
   "repo": "prismatic",
   "feeds": [
     {
-      "source": "https://www.prismatic-status.io/history.rss",
-      "feed_url": "https://www.prismatic-status.io/history.rss",
-      "title": "",
-      "saved": 0,
-      "method": "feed"
-    },
-    {
       "source": "https://prismatic.io/blog/",
       "feed_url": "https://prismatic.io/blog/",
       "title": "",
       "saved": 0,
       "method": "none"
+    },
+    {
+      "source": "https://www.prismatic-status.io/history.rss",
+      "feed_url": "https://www.prismatic-status.io/history.rss",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-01T23:35:02Z"
+  "post_count": 1,
+  "fetched": "2026-06-14T20:42:17Z"
 }

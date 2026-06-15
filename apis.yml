@@ -1,9 +1,10 @@
 aid: prismatic
 url: https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/apis.yml
 name: Prismatic
-description: The integration platform for B2B SaaS teams. Prismatic empowers everyone on your team
-  with integration tools for devs and non-devs alike, combining a code-native TypeScript SDK with a
-  low-code designer and an embedded marketplace for shipping customer-facing integrations.
+description: >-
+  The integration platform for B2B SaaS teams. Prismatic empowers everyone on your team with integration tools for devs
+  and non-devs alike, combining a code-native TypeScript SDK with a low-code designer and an embedded marketplace for
+  shipping customer-facing integrations.
 tags:
 - Embedded iPaaS
 - Integrations
@@ -23,10 +24,11 @@ specificationVersion: '0.19'
 apis:
 - aid: prismatic:prismatics-graphql-api
   name: Prismatics GraphQL API
-  description: Prismatic provides a GraphQL-based API for you to build, deploy, and support your integrations
-    programmatically. While Prismatic recommends that new users use the web app or Prismatic CLI tool
-    (prism) to manage Prismatic resources, developer users will likely want to use the API to script
-    integration management, embed in CI/CD pipelines, and drive multi-tenant deployments.
+  description: >-
+    Prismatic provides a GraphQL-based API for you to build, deploy, and support your integrations programmatically.
+    While Prismatic recommends that new users use the web app or Prismatic CLI tool (prism) to manage Prismatic
+    resources, developer users will likely want to use the API to script integration management, embed in CI/CD
+    pipelines, and drive multi-tenant deployments.
   humanURL: https://prismatic.io/docs/api/
   tags:
   - Connectors
@@ -96,11 +98,11 @@ apis:
     type: Example
   - url: examples/refresh-token-example.json
     type: Example
-  - type: NaftikoCapability
-    url: capabilities/graphql-authentication.yaml
-  - type: NaftikoCapability
-    url: capabilities/graphql-graphql.yaml
+  - url: graphql/prismatic-graphql.md
+    type: GraphQL
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/prismatic/overview
 - type: ArazzoWorkflows
   url: arazzo/
   workflows:

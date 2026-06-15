@@ -1,0 +1,668 @@
+{
+  "info": {
+    "_postman_id": "a9e61d78-9226-4840-a887-24691448a9e7",
+    "name": "Prismatic GraphQL API",
+    "description": "Prismatic provides a GraphQL-based API for building, deploying, and supporting integrations programmatically. The API allows you to manage customers, integrations, instances, components, and other resources. GraphQL operations include queries (pulling data) and mutations (creating, modifying, or deleting data). The API endpoint accepts GraphQL queries via HTTP POST requests. Authentication is handled via JWT bearer tokens obtained through the Prismatic web app or CLI tool.\n\nContact Support:\n Name: Prismatic",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:14:15.000Z",
+    "updatedAt": "2026-06-05T15:14:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a9e61d78-9226-4840-a887-24691448a9e7"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "Prismatic Execute GraphQL Query or Mutation",
+          "id": "b766fc5e-cc74-4589-9442-02a3782b2667",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"laborisd\": 52396717.62329182,\n    \"incididunt0ee\": \"commodo labore\"\n  },\n  \"operationName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api"
+              ]
+            },
+            "description": "Execute a GraphQL query or mutation against the Prismatic API. This endpoint accepts standard GraphQL request bodies containing a query string, optional variables, and an optional operation name. Use queries to retrieve data about customers, integrations, instances, components, and other resources. Use mutations to create, update, or delete resources. Rate limited to 20 requests per second."
+          },
+          "response": [
+            {
+              "id": "e6c42388-e8a8-4bc3-a2bf-446d30433a65",
+              "name": "GraphQL response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"laborisd\": 52396717.62329182,\n    \"incididunt0ee\": \"commodo labore\"\n  },\n  \"operationName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": {\n    \"ad_1\": -99256379.78071262\n  },\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"locations\": [\n        {\n          \"line\": \"<integer>\",\n          \"column\": \"<integer>\"\n        },\n        {\n          \"line\": \"<integer>\",\n          \"column\": \"<integer>\"\n        }\n      ],\n      \"path\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"extensions\": {\n        \"ipsumd\": \"ea\",\n        \"ullamco07b\": 73199557.50015566\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"locations\": [\n        {\n          \"line\": \"<integer>\",\n          \"column\": \"<integer>\"\n        },\n        {\n          \"line\": \"<integer>\",\n          \"column\": \"<integer>\"\n        }\n      ],\n      \"path\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"extensions\": {\n        \"proident1b2\": \"sed veniam sint aute enim\",\n        \"do_b8\": \"et qui \",\n        \"Duiscd\": -39720692\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:14:16.000Z",
+              "updatedAt": "2026-06-05T15:14:16.000Z",
+              "uid": "35240-e6c42388-e8a8-4bc3-a2bf-446d30433a65"
+            },
+            {
+              "id": "d75e0bed-b5cc-4640-9358-e30edf2c89cb",
+              "name": "Unauthorized - invalid or expired JWT token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"laborisd\": 52396717.62329182,\n    \"incididunt0ee\": \"commodo labore\"\n  },\n  \"operationName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:14:16.000Z",
+              "updatedAt": "2026-06-05T15:14:16.000Z",
+              "uid": "35240-d75e0bed-b5cc-4640-9358-e30edf2c89cb"
+            },
+            {
+              "id": "dbc65d6a-7665-430a-bf0a-a2f0d534e53e",
+              "name": "Rate limit exceeded - maximum 20 requests per second",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"laborisd\": 52396717.62329182,\n    \"incididunt0ee\": \"commodo labore\"\n  },\n  \"operationName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:14:16.000Z",
+              "updatedAt": "2026-06-05T15:14:16.000Z",
+              "uid": "35240-dbc65d6a-7665-430a-bf0a-a2f0d534e53e"
+            }
+          ],
+          "createdAt": "2026-06-05T15:14:15.000Z",
+          "updatedAt": "2026-06-05T15:14:15.000Z",
+          "uid": "35240-b766fc5e-cc74-4589-9442-02a3782b2667"
+        }
+      ],
+      "id": "9d23bc99-576f-4fff-be61-60d0682afc99",
+      "createdAt": "2026-06-05T15:14:15.000Z",
+      "updatedAt": "2026-06-05T15:14:15.000Z",
+      "uid": "35240-9d23bc99-576f-4fff-be61-60d0682afc99"
+    },
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "refresh",
+          "item": [
+            {
+              "name": "Prismatic Refresh Authentication Token",
+              "id": "0200aa51-9e60-4327-9de2-eccae0cc190f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"refresh_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/refresh",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "refresh"
+                  ]
+                },
+                "description": "Refresh an expired or expiring access token using a valid refresh token. Returns a new access token that can be used to authenticate against the GraphQL API. Refreshed tokens are valid for 7 days."
+              },
+              "response": [
+                {
+                  "id": "113e2c68-1681-47bb-bfcc-4d05da897baa",
+                  "name": "Successfully refreshed token",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"refresh_token\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/auth/refresh",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "refresh"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"access_token\": \"<string>\",\n  \"refresh_token\": \"<string>\",\n  \"token_type\": \"<string>\",\n  \"expires_in\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T15:14:16.000Z",
+                  "updatedAt": "2026-06-05T15:14:16.000Z",
+                  "uid": "35240-113e2c68-1681-47bb-bfcc-4d05da897baa"
+                },
+                {
+                  "id": "bbd9245b-e939-4153-a66c-46e19cca6a92",
+                  "name": "Invalid or expired refresh token",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"refresh_token\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/auth/refresh",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "refresh"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:14:16.000Z",
+                  "updatedAt": "2026-06-05T15:14:16.000Z",
+                  "uid": "35240-bbd9245b-e939-4153-a66c-46e19cca6a92"
+                }
+              ],
+              "createdAt": "2026-06-05T15:14:15.000Z",
+              "updatedAt": "2026-06-05T15:14:15.000Z",
+              "uid": "35240-0200aa51-9e60-4327-9de2-eccae0cc190f"
+            }
+          ],
+          "id": "d88310e7-79d6-4c5c-99f8-aced56e08380",
+          "createdAt": "2026-06-05T15:14:15.000Z",
+          "updatedAt": "2026-06-05T15:14:15.000Z",
+          "uid": "35240-d88310e7-79d6-4c5c-99f8-aced56e08380"
+        },
+        {
+          "name": "revoke",
+          "item": [
+            {
+              "name": "Prismatic Revoke Refresh Token",
+              "id": "9db2323a-bf0b-4349-b406-a95c6f622d08",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"refresh_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/revoke",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "revoke"
+                  ]
+                },
+                "description": "Revoke a refresh token to prevent it from being used to generate new access tokens. Use this endpoint if you believe a refresh token has been compromised."
+              },
+              "response": [
+                {
+                  "id": "01c0c2ea-5b1f-4653-9b95-ca1ebbeb6fd5",
+                  "name": "Successfully revoked refresh token",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"refresh_token\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/auth/revoke",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "revoke"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:14:16.000Z",
+                  "updatedAt": "2026-06-05T15:14:16.000Z",
+                  "uid": "35240-01c0c2ea-5b1f-4653-9b95-ca1ebbeb6fd5"
+                },
+                {
+                  "id": "f9bf0b55-b4be-4eb3-a0bb-a224d0dd1cfb",
+                  "name": "Invalid refresh token",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"refresh_token\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/auth/revoke",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "revoke"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:14:16.000Z",
+                  "updatedAt": "2026-06-05T15:14:16.000Z",
+                  "uid": "35240-f9bf0b55-b4be-4eb3-a0bb-a224d0dd1cfb"
+                }
+              ],
+              "createdAt": "2026-06-05T15:14:15.000Z",
+              "updatedAt": "2026-06-05T15:14:15.000Z",
+              "uid": "35240-9db2323a-bf0b-4349-b406-a95c6f622d08"
+            }
+          ],
+          "id": "3f20b8a4-791f-471d-8772-21112a9ae6f1",
+          "createdAt": "2026-06-05T15:14:15.000Z",
+          "updatedAt": "2026-06-05T15:14:15.000Z",
+          "uid": "35240-3f20b8a4-791f-471d-8772-21112a9ae6f1"
+        }
+      ],
+      "id": "31c5a4cc-9d6d-4ec3-92c0-75bd2af9b91a",
+      "createdAt": "2026-06-05T15:14:15.000Z",
+      "updatedAt": "2026-06-05T15:14:15.000Z",
+      "uid": "35240-31c5a4cc-9d6d-4ec3-92c0-75bd2af9b91a"
+    },
+    {
+      "name": "get_auth_token",
+      "item": [
+        {
+          "name": "Prismatic Get Short-Lived Auth Token",
+          "id": "07d894e0-85af-480e-96f2-a1b96468ba7c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "session",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/get_auth_token/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "get_auth_token",
+                ""
+              ]
+            },
+            "description": "Retrieve a short-lived authentication token while logged in to the Prismatic web application. This endpoint is accessed via browser and returns a JWT that can be used for API queries."
+          },
+          "response": [
+            {
+              "id": "52a5e2f5-bede-4b33-82b4-4a55e3d4a978",
+              "name": "Returns a short-lived JWT token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "session",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/get_auth_token/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "get_auth_token",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"access_token\": \"<string>\",\n  \"refresh_token\": \"<string>\",\n  \"token_type\": \"<string>\",\n  \"expires_in\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:14:16.000Z",
+              "updatedAt": "2026-06-05T15:14:16.000Z",
+              "uid": "35240-52a5e2f5-bede-4b33-82b4-4a55e3d4a978"
+            },
+            {
+              "id": "fb9a7b97-cc5a-47cf-aca0-1af7a2a40640",
+              "name": "Not authenticated - must be logged in to web application",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "session",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/get_auth_token/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "get_auth_token",
+                    ""
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:14:16.000Z",
+              "updatedAt": "2026-06-05T15:14:16.000Z",
+              "uid": "35240-fb9a7b97-cc5a-47cf-aca0-1af7a2a40640"
+            }
+          ],
+          "createdAt": "2026-06-05T15:14:15.000Z",
+          "updatedAt": "2026-06-05T15:14:15.000Z",
+          "uid": "35240-07d894e0-85af-480e-96f2-a1b96468ba7c"
+        }
+      ],
+      "id": "5a002ee6-2764-4f30-b597-fcf274e3ea9b",
+      "createdAt": "2026-06-05T15:14:15.000Z",
+      "updatedAt": "2026-06-05T15:14:15.000Z",
+      "uid": "35240-5a002ee6-2764-4f30-b597-fcf274e3ea9b"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://app.prismatic.io"
+    }
+  ]
+}
