@@ -87,46 +87,43 @@ apis:
   - url: json-structure/flow.json
     type: JSONStructure
   - url: examples/list-customers-example.json
-    type: Example
+    type: Examples
   - url: examples/list-integrations-example.json
-    type: Example
+    type: Examples
   - url: examples/list-components-example.json
-    type: Example
+    type: Examples
   - url: examples/list-instances-example.json
-    type: Example
+    type: Examples
   - url: examples/create-customer-example.json
-    type: Example
+    type: Examples
   - url: examples/refresh-token-example.json
-    type: Example
+    type: Examples
   - url: graphql/prismatic-graphql.md
     type: GraphQL
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/prismatic/overview
-- type: ArazzoWorkflows
-  url: arazzo/
-  workflows:
-  - url: arazzo/prismatic-browser-session-list-components-workflow.yml
-    name: Prismatic Browser Session List Components
-    summary: Get a short-lived token from an active web session, then list components.
-  - url: arazzo/prismatic-create-customer-workflow.yml
-    name: Prismatic Create Customer with Refreshed Token
-    summary: Refresh an access token then create a new customer tenant.
-  - url: arazzo/prismatic-list-integrations-and-instances-workflow.yml
-    name: Prismatic List Integrations and Deployed Instances
-    summary: List all integrations, then list the deployed instances that reference them.
-  - url: arazzo/prismatic-onboard-and-verify-customer-workflow.yml
-    name: Prismatic Onboard and Verify Customer
-    summary: Create a customer, branch on GraphQL errors, then verify it appears in the customer list.
-  - url: arazzo/prismatic-refresh-and-list-customers-workflow.yml
-    name: Prismatic Refresh Token and List Customers
-    summary: Exchange a refresh token for a fresh access token, then list all customers.
-  - url: arazzo/prismatic-rotate-refresh-token-workflow.yml
-    name: Prismatic Rotate Refresh Token
-    summary: Refresh an access token, use it, then revoke the old refresh token.
-  - url: arazzo/prismatic-tenant-inventory-snapshot-workflow.yml
-    name: Prismatic Tenant Inventory Snapshot
-    summary: Capture a full snapshot of customers, integrations, and instances in one pass.
+- type: Arazzo
+  url: arazzo/prismatic-browser-session-list-components-workflow.yml
+  name: Prismatic Browser Session List Components
+- type: Arazzo
+  url: arazzo/prismatic-create-customer-workflow.yml
+  name: Prismatic Create Customer with Refreshed Token
+- type: Arazzo
+  url: arazzo/prismatic-list-integrations-and-instances-workflow.yml
+  name: Prismatic List Integrations and Deployed Instances
+- type: Arazzo
+  url: arazzo/prismatic-onboard-and-verify-customer-workflow.yml
+  name: Prismatic Onboard and Verify Customer
+- type: Arazzo
+  url: arazzo/prismatic-refresh-and-list-customers-workflow.yml
+  name: Prismatic Refresh Token and List Customers
+- type: Arazzo
+  url: arazzo/prismatic-rotate-refresh-token-workflow.yml
+  name: Prismatic Rotate Refresh Token
+- type: Arazzo
+  url: arazzo/prismatic-tenant-inventory-snapshot-workflow.yml
+  name: Prismatic Tenant Inventory Snapshot
 - url: https://prismatic.io
   type: Website
 - url: https://prismatic.io/docs/
@@ -142,19 +139,19 @@ common:
   type: CLI
 - url: https://www.npmjs.com/package/@prismatic-io/spectral
   name: '@prismatic-io/spectral on npm'
-  type: SDK
+  type: SDKs
 - url: https://www.npmjs.com/package/@prismatic-io/embedded
   name: '@prismatic-io/embedded on npm'
-  type: SDK
+  type: SDKs
 - url: https://prismatic.io/docs/custom-connectors/
   name: Custom Connectors Overview | Prismatic Docs
   type: SDKs
 - url: https://github.com/prismatic-io/spectral
   name: Spectral TypeScript SDK
-  type: SDK
+  type: SDKs
 - url: https://github.com/prismatic-io/embedded
   name: Embedded SDK
-  type: SDK
+  type: SDKs
 - url: https://github.com/prismatic-io/vscode
   name: Prismatic VSCode/Cursor Extension
   type: IDE
@@ -166,7 +163,7 @@ common:
   type: MCP
 - url: https://github.com/prismatic-io/prismatic-skills
   name: Prismatic Skills For Claude Code
-  type: AgentSkill
+  type: AgentSkills
 - url: https://prismatic.io/docs/api/ci-cd-system/
   name: Prismatics API In A CI/CD System | Prismatic Docs
   type: CI/CD
@@ -629,7 +626,7 @@ common:
   - name: Fits The Way You Build Software
 - name: Agent Skills
   url: https://github.com/prismatic-io/prismatic-skills
-  type: AgentSkill
+  type: AgentSkills
 - name: MCP Server
   url: https://github.com/prismatic-io/prism-mcp
   type: MCP
@@ -642,7 +639,7 @@ common:
     url: https://github.com/prismatic-io/prism-mcp
   - name: Prismatic Skills For Claude Code
     url: https://github.com/prismatic-io/prismatic-skills
-- type: LLMsTxt
+- type: LlmsText
   url: https://prismatic.io/llms.txt
 maintainers:
 - FN: Kin Lane
