@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/prismatic-graphql-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - cookie
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: JWT token obtained via the Prismatic web app, CLI tool (me:token subcommand),
+    or the /auth/refresh endpoint. Pass as Authorization Bearer header.
+  sources:
+  - openapi/prismatic-graphql-api-openapi.yml
+- name: cookieAuth
+  type: apiKey
+  in: cookie
+  parameter: session
+  description: Session cookie from Prismatic web application login
+  sources:
+  - openapi/prismatic-graphql-api-openapi.yml

@@ -101,6 +101,12 @@ apis:
   - url: graphql/prismatic-graphql.md
     type: GraphQL
 common:
+- type: VulnerabilityDisclosure
+  url: security/prismatic-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/prismatic-domain-security.yml
+- type: Authentication
+  url: authentication/prismatic-authentication.yml
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/prismatic/overview
 - type: Arazzo
