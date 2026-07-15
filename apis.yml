@@ -101,6 +101,8 @@ apis:
   - url: graphql/prismatic-graphql.md
     type: GraphQL
 common:
+- type: AgenticAccess
+  url: agentic-access/prismatic-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/prismatic-vulnerability-disclosure.yml
 - type: DomainSecurity
