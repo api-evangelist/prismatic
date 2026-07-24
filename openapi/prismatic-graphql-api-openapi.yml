@@ -1,14 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Prismatic GraphQL API
-  description: >-
-    Prismatic provides a GraphQL-based API for building, deploying, and
-    supporting integrations programmatically. The API allows you to manage
-    customers, integrations, instances, components, and other resources.
-    GraphQL operations include queries (pulling data) and mutations (creating,
-    modifying, or deleting data). The API endpoint accepts GraphQL queries
-    via HTTP POST requests. Authentication is handled via JWT bearer tokens
-    obtained through the Prismatic web app or CLI tool.
+  title: Prismatic Authentication GraphQL API
+  description: Prismatic provides a GraphQL-based API for building, deploying, and supporting integrations programmatically. The API allows you to manage customers, integrations, instances, components, and other resources. GraphQL operations include queries (pulling data) and mutations (creating, modifying, or deleting data). The API endpoint accepts GraphQL queries via HTTP POST requests. Authentication is handled via JWT bearer tokens obtained through the Prismatic web app or CLI tool.
   version: 1.0.0
   contact:
     name: Prismatic
@@ -17,30 +10,27 @@ info:
     name: Proprietary
     url: https://prismatic.io/legal/terms/
   x-topics:
-    - Integrations
-    - Embedded SaaS Integration
-    - Workflows
-    - Connectors
-    - GraphQL
+  - Integrations
+  - Embedded SaaS Integration
+  - Workflows
+  - Connectors
+  - GraphQL
 servers:
-  - url: https://app.prismatic.io
-    description: Prismatic Production API
+- url: https://app.prismatic.io
+  description: Prismatic Production API
+tags:
+- name: GraphQL
+  description: GraphQL API endpoint for querying and mutating Prismatic resources including customers, integrations, instances, and components
 paths:
   /api:
     post:
       operationId: executeGraphQLQuery
       summary: Prismatic Execute GraphQL Query or Mutation
-      description: >-
-        Execute a GraphQL query or mutation against the Prismatic API. This
-        endpoint accepts standard GraphQL request bodies containing a query
-        string, optional variables, and an optional operation name. Use queries
-        to retrieve data about customers, integrations, instances, components,
-        and other resources. Use mutations to create, update, or delete
-        resources. Rate limited to 20 requests per second.
+      description: Execute a GraphQL query or mutation against the Prismatic API. This endpoint accepts standard GraphQL request bodies containing a query string, optional variables, and an optional operation name. Use queries to retrieve data about customers, integrations, instances, components, and other resources. Use mutations to create, update, or delete resources. Rate limited to 20 requests per second.
       tags:
-        - GraphQL
+      - GraphQL
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       requestBody:
         required: true
         content:
@@ -51,78 +41,23 @@ paths:
               listCustomers:
                 summary: List all customers
                 value:
-                  query: >-
-                    query listCustomers {
-                      customers {
-                        nodes {
-                          id
-                          name
-                          externalId
-                        }
-                      }
-                    }
+                  query: "query listCustomers {\n  customers {\n    nodes {\n      id\n      name\n      externalId\n    }\n  }\n}"
               listIntegrations:
                 summary: List all integrations
                 value:
-                  query: >-
-                    query listIntegrations {
-                      integrations {
-                        nodes {
-                          id
-                          name
-                          description
-                        }
-                      }
-                    }
+                  query: "query listIntegrations {\n  integrations {\n    nodes {\n      id\n      name\n      description\n    }\n  }\n}"
               listComponents:
                 summary: List all components
                 value:
-                  query: >-
-                    query listComponents {
-                      components {
-                        nodes {
-                          id
-                          label
-                          description
-                          key
-                          authorizationRequired
-                        }
-                      }
-                    }
+                  query: "query listComponents {\n  components {\n    nodes {\n      id\n      label\n      description\n      key\n      authorizationRequired\n    }\n  }\n}"
               listInstances:
                 summary: List all instances
                 value:
-                  query: >-
-                    query listInstances {
-                      instances {
-                        nodes {
-                          id
-                          name
-                          customer {
-                            id
-                            name
-                          }
-                          integration {
-                            id
-                            name
-                          }
-                        }
-                      }
-                    }
+                  query: "query listInstances {\n  instances {\n    nodes {\n      id\n      name\n      customer {\n        id\n        name\n      }\n      integration {\n        id\n        name\n      }\n    }\n  }\n}"
               createCustomer:
                 summary: Create a new customer
                 value:
-                  query: >-
-                    mutation createCustomer($name: String!, $externalId:
-                    String) {
-                      createCustomer(input: { name: $name, externalId: $externalId }) {
-                        customer {
-                          id
-                          name
-                          externalId
-                        }
-                      }
-                    }
+                  query: "mutation createCustomer($name: String!, $externalId: String) {\n  createCustomer(input: { name: $name, externalId: $externalId }) {\n    customer {\n      id\n      name\n      externalId\n    }\n  }\n}"
                   variables:
                     name: Acme Corp
                     externalId: acme-123
@@ -137,123 +72,18 @@ paths:
           description: Unauthorized - invalid or expired JWT token
         '429':
           description: Rate limit exceeded - maximum 20 requests per second
-  /auth/refresh:
-    post:
-      operationId: refreshAuthToken
-      summary: Prismatic Refresh Authentication Token
-      description: >-
-        Refresh an expired or expiring access token using a valid refresh token.
-        Returns a new access token that can be used to authenticate against the
-        GraphQL API. Refreshed tokens are valid for 7 days.
-      tags:
-        - Authentication
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RefreshTokenRequest'
-      responses:
-        '200':
-          description: Successfully refreshed token
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TokenResponse'
-        '401':
-          description: Invalid or expired refresh token
-  /auth/revoke:
-    post:
-      operationId: revokeAuthToken
-      summary: Prismatic Revoke Refresh Token
-      description: >-
-        Revoke a refresh token to prevent it from being used to generate new
-        access tokens. Use this endpoint if you believe a refresh token has
-        been compromised.
-      tags:
-        - Authentication
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RefreshTokenRequest'
-      responses:
-        '200':
-          description: Successfully revoked refresh token
-        '401':
-          description: Invalid refresh token
-  /get_auth_token/:
-    get:
-      operationId: getAuthToken
-      summary: Prismatic Get Short-Lived Auth Token
-      description: >-
-        Retrieve a short-lived authentication token while logged in to the
-        Prismatic web application. This endpoint is accessed via browser
-        and returns a JWT that can be used for API queries.
-      tags:
-        - Authentication
-      security:
-        - cookieAuth: []
-      responses:
-        '200':
-          description: Returns a short-lived JWT token
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TokenResponse'
-        '401':
-          description: Not authenticated - must be logged in to web application
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: >-
-        JWT token obtained via the Prismatic web app, CLI tool (me:token
-        subcommand), or the /auth/refresh endpoint. Pass as Authorization
-        Bearer header.
-    cookieAuth:
-      type: apiKey
-      in: cookie
-      name: session
-      description: Session cookie from Prismatic web application login
   schemas:
-    GraphQLRequest:
-      type: object
-      required:
-        - query
-      properties:
-        query:
-          type: string
-          description: >-
-            The GraphQL query or mutation string. Queries retrieve data while
-            mutations create, update, or delete resources.
-        variables:
-          type: object
-          description: >-
-            Optional variables to pass to the GraphQL query or mutation.
-            Variables are referenced in the query string using the $ prefix.
-          additionalProperties: true
-        operationName:
-          type: string
-          description: >-
-            Optional name of the operation to execute if the query string
-            contains multiple named operations.
     GraphQLResponse:
       type: object
       properties:
         data:
           type: object
-          description: >-
-            The result data from the GraphQL query or mutation. Structure
-            matches the shape of the query.
+          description: The result data from the GraphQL query or mutation. Structure matches the shape of the query.
           additionalProperties: true
         errors:
           type: array
-          description: >-
-            Array of error objects if the query or mutation encountered errors.
+          description: Array of error objects if the query or mutation encountered errors.
           items:
             $ref: '#/components/schemas/GraphQLError'
     GraphQLError:
@@ -281,37 +111,29 @@ components:
           type: object
           description: Additional error information
           additionalProperties: true
-    RefreshTokenRequest:
+    GraphQLRequest:
       type: object
       required:
-        - refresh_token
+      - query
       properties:
-        refresh_token:
+        query:
           type: string
-          description: >-
-            The refresh token to use for obtaining a new access token or
-            to revoke
-    TokenResponse:
-      type: object
-      properties:
-        access_token:
+          description: The GraphQL query or mutation string. Queries retrieve data while mutations create, update, or delete resources.
+        variables:
+          type: object
+          description: Optional variables to pass to the GraphQL query or mutation. Variables are referenced in the query string using the $ prefix.
+          additionalProperties: true
+        operationName:
           type: string
-          description: JWT access token for authenticating API requests
-        refresh_token:
-          type: string
-          description: Refresh token for obtaining new access tokens
-        token_type:
-          type: string
-          description: Type of token, typically Bearer
-        expires_in:
-          type: integer
-          description: Token expiration time in seconds
-tags:
-  - name: Authentication
-    description: >-
-      Authentication endpoints for obtaining, refreshing, and revoking
-      JWT tokens used to access the Prismatic API
-  - name: GraphQL
-    description: >-
-      GraphQL API endpoint for querying and mutating Prismatic resources
-      including customers, integrations, instances, and components
+          description: Optional name of the operation to execute if the query string contains multiple named operations.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token obtained via the Prismatic web app, CLI tool (me:token subcommand), or the /auth/refresh endpoint. Pass as Authorization Bearer header.
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: session
+      description: Session cookie from Prismatic web application login
