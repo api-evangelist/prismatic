@@ -15,7 +15,20 @@ tags:
 - Code-Native
 - Low-Code
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/prismatic.png
 access: 3rd-Party
 position: Consumer
 created: '2025-06-05'
@@ -26,9 +39,9 @@ apis:
   name: Prismatics GraphQL API
   description: >-
     Prismatic provides a GraphQL-based API for you to build, deploy, and support your integrations programmatically.
-    While Prismatic recommends that new users use the web app or Prismatic CLI tool (prism) to manage Prismatic
-    resources, developer users will likely want to use the API to script integration management, embed in CI/CD
-    pipelines, and drive multi-tenant deployments.
+    While Prismatic recommends that new users use the web app or Prismatic CLI tool (prism) to manage
+    Prismatic resources, developer users will likely want to use the API to script integration management,
+    embed in CI/CD pipelines, and drive multi-tenant deployments.
   humanURL: https://prismatic.io/docs/api/
   tags:
   - Connectors
@@ -100,6 +113,17 @@ apis:
     type: Examples
   - url: graphql/prismatic-graphql.md
     type: GraphQL
+- aid: prismatic:prismatic-authentication-api
+  name: Prismatic Authentication API
+  description: >-
+    Authentication endpoints for obtaining, refreshing, and revoking JWT tokens used to access the Prismatic
+    API
+  humanURL: https://prismatic.io/docs/api/
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/prismatic-authentication-api-openapi.yml
 common:
 - type: AgenticAccess
   url: agentic-access/prismatic-agentic-access.yml
