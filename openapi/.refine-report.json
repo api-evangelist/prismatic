@@ -1,0 +1,16 @@
+{
+  "provider": "prismatic",
+  "sources": [
+    "prismatic-authentication-api-openapi.yml",
+    "prismatic-graphql-api-openapi.yml"
+  ],
+  "outputs": [
+    "prismatic-authentication-api-openapi.yml",
+    "prismatic-graphql-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
