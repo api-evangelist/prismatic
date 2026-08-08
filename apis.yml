@@ -192,7 +192,7 @@ common:
   type: Terraform
 - url: https://github.com/prismatic-io/prism-mcp
   name: Prism MCP Server
-  type: MCP
+  type: Documentation
 - url: https://github.com/prismatic-io/prismatic-skills
   name: Prismatic Skills For Claude Code
   type: AgentSkills
@@ -661,7 +661,7 @@ common:
   type: AgentSkills
 - name: MCP Server
   url: https://github.com/prismatic-io/prism-mcp
-  type: MCP
+  type: Documentation
 - name: AI Agent Surfaces
   type: AIAgent
   data:
