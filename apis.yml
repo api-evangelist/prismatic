@@ -33,7 +33,7 @@ access: 3rd-Party
 position: Consumer
 created: '2025-06-05'
 modified: '2026-05-22'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: prismatic:prismatics-graphql-api
   name: Prismatics GraphQL API
