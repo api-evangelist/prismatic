@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Prismatic GraphQL Authentication API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prismatic Refresh Authentication Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.prismatic.io/auth/refresh",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refresh an expired or expiring access token using a valid refresh token. Returns a new access token that can be used to authenticate against the GraphQL API. Refreshed tokens are valid for 7 days."
+        },
+        {
+          "info": {
+            "name": "Prismatic Revoke Refresh Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.prismatic.io/auth/revoke",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Revoke a refresh token to prevent it from being used to generate new access tokens. Use this endpoint if you believe a refresh token has been compromised."
+        },
+        {
+          "info": {
+            "name": "Prismatic Get Short-Lived Auth Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.prismatic.io/get_auth_token/",
+            "auth": {
+              "type": "apikey",
+              "key": "session",
+              "value": "{{session}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a short-lived authentication token while logged in to the Prismatic web application. This endpoint is accessed via browser and returns a JWT that can be used for API queries."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
