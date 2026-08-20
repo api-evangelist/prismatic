@@ -7,6 +7,15 @@ description: >-
   shipping customer-facing integrations.
 tags:
 - Embedded iPaaS
+- Integration
+- Workflows
+- Connectors
+- AI Agents
+- MCP
+- Code-Native
+- Low-Code
+tags_raw:
+- Embedded iPaaS
 - Integrations
 - Workflows
 - Connectors
@@ -44,6 +53,14 @@ apis:
     embed in CI/CD pipelines, and drive multi-tenant deployments.
   humanURL: https://prismatic.io/docs/api/
   tags:
+  - Connectors
+  - Embedded SaaS
+  - Embedded SaaS Integration
+  - Integration
+  - Workflows
+  - GraphQL
+  - Management API
+  tags_raw:
   - Connectors
   - Embedded SaaS
   - Embedded SaaS Integration
