@@ -12,7 +12,10 @@ info:
     single GraphQL-over-HTTP executeGraphQLQuery endpoint.
   version: 1.0.0
 sourceDescriptions:
-- name: prismaticGraphqlApi
+- name: authenticationApi
+  url: ../openapi/prismatic-authentication-api-openapi.yml
+  type: openapi
+- name: graphqlApi
   url: ../openapi/prismatic-graphql-api-openapi.yml
   type: openapi
 workflows:

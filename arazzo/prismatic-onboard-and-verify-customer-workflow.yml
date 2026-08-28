@@ -15,7 +15,7 @@ info:
     documents a single 200 response.
   version: 1.0.0
 sourceDescriptions:
-- name: prismaticGraphqlApi
+- name: graphqlApi
   url: ../openapi/prismatic-graphql-api-openapi.yml
   type: openapi
 workflows:

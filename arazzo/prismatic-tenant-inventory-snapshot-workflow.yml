@@ -13,7 +13,7 @@ info:
     with strings taken from the specification examples.
   version: 1.0.0
 sourceDescriptions:
-- name: prismaticGraphqlApi
+- name: graphqlApi
   url: ../openapi/prismatic-graphql-api-openapi.yml
   type: openapi
 workflows:
