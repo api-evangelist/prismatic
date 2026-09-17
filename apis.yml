@@ -57,92 +57,6 @@ created: '2025-06-05'
 modified: '2026-05-22'
 specificationVersion: '0.23'
 apis:
-- aid: prismatic:prismatics-graphql-api
-  name: Prismatics GraphQL API
-  description: >-
-    Prismatic provides a GraphQL-based API for you to build, deploy, and support your integrations programmatically.
-    While Prismatic recommends that new users use the web app or Prismatic CLI tool (prism) to manage
-    Prismatic resources, developer users will likely want to use the API to script integration management,
-    embed in CI/CD pipelines, and drive multi-tenant deployments.
-  humanURL: https://prismatic.io/docs/api/
-  tags:
-  - Connectors
-  - Embedded SaaS
-  - Embedded SaaS Integration
-  - Integration
-  - Workflows
-  - GraphQL
-  - Management API
-  tags_raw:
-  - Connectors
-  - Embedded SaaS
-  - Embedded SaaS Integration
-  - Integrations
-  - Workflows
-  - GraphQL
-  - Management API
-  properties:
-  - url: openapi/prismatic-graphql-api-openapi.yml
-    type: OpenAPI
-  - url: https://prismatic.io/docs/api/
-    type: Documentation
-  - url: https://prismatic.io/docs/api/authentication/
-    name: Authentication | Prismatic Docs
-    type: Authentication
-  - url: https://prismatic.io/docs/api/pagination/
-    name: Pagination With Prismatics API | Prismatic Docs
-    type: Pagination
-  - url: https://prismatic.io/docs/explorer/
-    name: Prismatics GraphiQL Explorer | Prismatic Docs
-    type: Explorer
-  - url: rules/prismatic-graphql-api-rules.yml
-    type: SpectralRules
-  - url: vocabulary/prismatic-vocabulary.yml
-    type: Vocabulary
-  - url: json-ld/prismatic-context.jsonld
-    type: JSONLD
-  - url: json-schema/customer.json
-    type: JSONSchema
-  - url: json-schema/integration.json
-    type: JSONSchema
-  - url: json-schema/instance.json
-    type: JSONSchema
-  - url: json-schema/component.json
-    type: JSONSchema
-  - url: json-schema/flow.json
-    type: JSONSchema
-  - url: json-schema/config-variable.json
-    type: JSONSchema
-  - url: json-schema/user.json
-    type: JSONSchema
-  - url: json-schema/alert-monitor.json
-    type: JSONSchema
-  - url: json-schema/execution.json
-    type: JSONSchema
-  - url: json-structure/customer.json
-    type: JSONStructure
-  - url: json-structure/integration.json
-    type: JSONStructure
-  - url: json-structure/instance.json
-    type: JSONStructure
-  - url: json-structure/component.json
-    type: JSONStructure
-  - url: json-structure/flow.json
-    type: JSONStructure
-  - url: examples/list-customers-example.json
-    type: Examples
-  - url: examples/list-integrations-example.json
-    type: Examples
-  - url: examples/list-components-example.json
-    type: Examples
-  - url: examples/list-instances-example.json
-    type: Examples
-  - url: examples/create-customer-example.json
-    type: Examples
-  - url: examples/refresh-token-example.json
-    type: Examples
-  - url: graphql/prismatic-graphql.md
-    type: GraphQL
 - aid: prismatic:prismatic-authentication-api
   name: Prismatic Authentication API
   description: >-
@@ -154,6 +68,73 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/prismatic-authentication-api-openapi.yml
+- aid: prismatic:prismatic-graph-ql-api
+  name: Prismatic Graph QL API
+  description: >-
+    GraphQL API endpoint for querying and mutating Prismatic resources including customers, integrations,
+    instances, and components
+  humanURL: https://prismatic.io/docs/api/
+  tags:
+  - Graph QL
+  properties:
+  - type: OpenAPI
+    url: openapi/prismatic-graph-ql-api-openapi.yml
+  - type: Documentation
+    url: https://prismatic.io/docs/api/
+  - type: Authentication
+    url: https://prismatic.io/docs/api/authentication/
+  - type: Pagination
+    url: https://prismatic.io/docs/api/pagination/
+  - type: Explorer
+    url: https://prismatic.io/docs/explorer/
+  - type: SpectralRules
+    url: rules/prismatic-graphql-api-rules.yml
+  - type: Vocabulary
+    url: vocabulary/prismatic-vocabulary.yml
+  - type: JSONLD
+    url: json-ld/prismatic-context.jsonld
+  - type: JSONSchema
+    url: json-schema/customer.json
+  - type: JSONSchema
+    url: json-schema/integration.json
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/component.json
+  - type: JSONSchema
+    url: json-schema/flow.json
+  - type: JSONSchema
+    url: json-schema/config-variable.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/alert-monitor.json
+  - type: JSONSchema
+    url: json-schema/execution.json
+  - type: JSONStructure
+    url: json-structure/customer.json
+  - type: JSONStructure
+    url: json-structure/integration.json
+  - type: JSONStructure
+    url: json-structure/instance.json
+  - type: JSONStructure
+    url: json-structure/component.json
+  - type: JSONStructure
+    url: json-structure/flow.json
+  - type: Examples
+    url: examples/list-customers-example.json
+  - type: Examples
+    url: examples/list-integrations-example.json
+  - type: Examples
+    url: examples/list-components-example.json
+  - type: Examples
+    url: examples/list-instances-example.json
+  - type: Examples
+    url: examples/create-customer-example.json
+  - type: Examples
+    url: examples/refresh-token-example.json
+  - type: GraphQL
+    url: graphql/prismatic-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/prismatic-agentic-access.yml
