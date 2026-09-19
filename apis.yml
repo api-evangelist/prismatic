@@ -75,6 +75,8 @@ apis:
     instances, and components
   humanURL: https://prismatic.io/docs/api/
   tags:
+  - GraphQL
+  tags_raw:
   - Graph QL
   properties:
   - type: OpenAPI
