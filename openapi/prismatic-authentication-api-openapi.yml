@@ -82,6 +82,14 @@ paths:
           description: Not authenticated - must be logged in to web application
 components:
   schemas:
+    RefreshTokenRequest:
+      type: object
+      required:
+      - refresh_token
+      properties:
+        refresh_token:
+          type: string
+          description: The refresh token to use for obtaining a new access token or to revoke
     TokenResponse:
       type: object
       properties:
@@ -97,14 +105,6 @@ components:
         expires_in:
           type: integer
           description: Token expiration time in seconds
-    RefreshTokenRequest:
-      type: object
-      required:
-      - refresh_token
-      properties:
-        refresh_token:
-          type: string
-          description: The refresh token to use for obtaining a new access token or to revoke
   securitySchemes:
     bearerAuth:
       type: http
