@@ -74,6 +74,21 @@ paths:
           description: Rate limit exceeded - maximum 20 requests per second
 components:
   schemas:
+    GraphQLRequest:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: The GraphQL query or mutation string. Queries retrieve data while mutations create, update, or delete resources.
+        variables:
+          type: object
+          description: Optional variables to pass to the GraphQL query or mutation. Variables are referenced in the query string using the $ prefix.
+          additionalProperties: true
+        operationName:
+          type: string
+          description: Optional name of the operation to execute if the query string contains multiple named operations.
     GraphQLError:
       type: object
       properties:
@@ -99,21 +114,6 @@ components:
           type: object
           description: Additional error information
           additionalProperties: true
-    GraphQLRequest:
-      type: object
-      required:
-      - query
-      properties:
-        query:
-          type: string
-          description: The GraphQL query or mutation string. Queries retrieve data while mutations create, update, or delete resources.
-        variables:
-          type: object
-          description: Optional variables to pass to the GraphQL query or mutation. Variables are referenced in the query string using the $ prefix.
-          additionalProperties: true
-        operationName:
-          type: string
-          description: Optional name of the operation to execute if the query string contains multiple named operations.
     GraphQLResponse:
       type: object
       properties:
