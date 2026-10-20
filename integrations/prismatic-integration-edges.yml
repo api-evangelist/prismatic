@@ -1,0 +1,16 @@
+generated: '2026-10-20'
+method: none
+source:
+- https://zapier.com/apps/prismatic/integrations
+- https://n8n.io/integrations/prismatic/
+- https://composio.dev/toolkits/prismatic
+- https://monid.ai/tools/prismatic
+checked:
+- https://composio.dev/toolkits/prismatic
+- https://monid.ai/tools/prismatic
+- https://n8n.io/integrations/prismatic/
+- https://zapier.com/apps/prismatic/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
