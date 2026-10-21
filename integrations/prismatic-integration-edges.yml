@@ -11,6 +11,8 @@ checked:
 - https://n8n.io/integrations/prismatic/
 - https://zapier.com/apps/prismatic/integrations
 - eclipse/integrations/eclipse-integration-edges.yml
+- opentofu/integrations/opentofu-integration-edges.yml
+- terraform/integrations/terraform-integration-edges.yml
 summary: null
 marketplace_apps: []
 edges:
@@ -33,4 +35,42 @@ edges:
   category: IDE / developer extension marketplace listing
   badges:
   - Verified namespace
+- partner_name: OpenTofu (opentofu-registry)
+  partner: opentofu
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: opentofu-registry
+  evidence: https://search.opentofu.org/provider/prismatic-io/prismatic
+  mirror_of: opentofu/integrations/opentofu-integration-edges.yml
+  apps:
+  - prismatic-io/prismatic
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: infrastructure-as-code provider registry listing
+  badges:
+  - Verified publisher (GitHub domain-verified organization)
+- partner_name: Terraform (terraform-registry)
+  partner: terraform
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: terraform-registry
+  evidence: https://registry.terraform.io/providers/prismatic-io/prismatic
+  mirror_of: terraform/integrations/terraform-integration-edges.yml
+  apps:
+  - prismatic-io/prismatic
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: infrastructure-as-code provider registry listing
+  badges:
+  - Verified publisher (GitHub domain-verified organization)
 templates: []
